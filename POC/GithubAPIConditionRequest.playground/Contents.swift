@@ -23,7 +23,7 @@ class MyViewController : UIViewController {
         let url = URL(string: "https://api.github.com/notifications")!
 
         var request = URLRequest(url: url)
-        request.setValue("token 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", forHTTPHeaderField: "Authorization")
+        request.setValue("token [token]", forHTTPHeaderField: "Authorization")
         request.setValue(lastUpdate, forHTTPHeaderField: "If-Modified-Since")
         request.cachePolicy = .reloadIgnoringCacheData
         let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
