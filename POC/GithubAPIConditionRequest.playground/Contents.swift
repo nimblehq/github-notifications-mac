@@ -25,6 +25,7 @@ class MyViewController : UIViewController {
         var request = URLRequest(url: url)
         request.setValue("token [token]", forHTTPHeaderField: "Authorization")
         request.setValue(lastUpdate, forHTTPHeaderField: "If-Modified-Since")
+        // Needs this to ignore cache to show in result
         request.cachePolicy = .reloadIgnoringCacheData
         let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
             guard let data = data else { return }
