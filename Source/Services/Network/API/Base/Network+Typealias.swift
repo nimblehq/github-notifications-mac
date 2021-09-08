@@ -17,7 +17,6 @@ typealias JSONEncoding = Alamofire.JSONEncoding
 typealias RequestAdapterProtocol = Alamofire.RequestAdapter
 typealias RequestRetrierProtocol = Alamofire.RequestRetrier
 typealias RequestCompletion<T> = (Result<T, Error>) -> Void
-typealias EmptyResultCompletion = RequestCompletion<EmptyAPIResponse>
 typealias CompletionHandler = () -> Void
 typealias ResultWithErrorCompletion<Response: Decodable, ErrorResponse: Decodable> =
     (Result<(Response, ErrorResponse), Error>) -> Void

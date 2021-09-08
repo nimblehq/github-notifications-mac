@@ -34,21 +34,8 @@ final class GithubAPI: API {
         return url?.absoluteString ?? baseURL
     }
 
-    func url(forEndpoint endpoint: String, baseURL: String) -> String {
-        let url = try? baseURL.asURL().appendingPathComponent(endpoint, isDirectory: false)
-        return url?.absoluteString ?? baseURL
-    }
-
     func performRequest(
         with configuration: RequestConfiguration,
-        completion: @escaping RequestCompletion<Data>
-    ) -> Request {
-        return performRequest(with: configuration, specialErrors: [.min: EmptyAPIResponse.self], completion: completion)
-    }
-
-    func performRequest<T: Decodable>(
-        with configuration: RequestConfiguration,
-        specialErrors: SpecialErrorType<T>,
         completion: @escaping RequestCompletion<Data>
     ) -> Request {
         session.request(

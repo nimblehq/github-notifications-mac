@@ -17,10 +17,8 @@
 		099D0B1926E783F200960001 /* GithubNotificationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B1826E783F200960001 /* GithubNotificationsUITests.swift */; };
 		099D0B2926E7872F00960001 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 099D0B2826E7872F00960001 /* KeychainAccess */; };
 		099D0B2C26E7875400960001 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 099D0B2B26E7875400960001 /* Alamofire */; };
-		099D0B5F26E78A2B00960001 /* Errorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B3E26E78A2B00960001 /* Errorable.swift */; };
 		099D0B6126E78A2B00960001 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B4026E78A2B00960001 /* GithubAPI.swift */; };
 		099D0B6226E78A2B00960001 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B4126E78A2B00960001 /* EndpointType.swift */; };
-		099D0B6426E78A2B00960001 /* EmptyAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B4426E78A2B00960001 /* EmptyAPIResponse.swift */; };
 		099D0B6526E78A2B00960001 /* Network+Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B4526E78A2B00960001 /* Network+Typealias.swift */; };
 		099D0B6626E78A2B00960001 /* BaseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B4626E78A2B00960001 /* BaseModels.swift */; };
 		099D0B6726E78A2B00960001 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B4726E78A2B00960001 /* Request.swift */; };
@@ -66,10 +64,8 @@
 		099D0B1826E783F200960001 /* GithubNotificationsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubNotificationsUITests.swift; sourceTree = "<group>"; };
 		099D0B1A26E783F200960001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		099D0B2626E7846E00960001 /* GithubNotifications.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GithubNotifications.entitlements; sourceTree = "<group>"; };
-		099D0B3E26E78A2B00960001 /* Errorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errorable.swift; sourceTree = "<group>"; };
 		099D0B4026E78A2B00960001 /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		099D0B4126E78A2B00960001 /* EndpointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
-		099D0B4426E78A2B00960001 /* EmptyAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyAPIResponse.swift; sourceTree = "<group>"; };
 		099D0B4526E78A2B00960001 /* Network+Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Network+Typealias.swift"; sourceTree = "<group>"; };
 		099D0B4626E78A2B00960001 /* BaseModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModels.swift; sourceTree = "<group>"; };
 		099D0B4726E78A2B00960001 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -265,7 +261,6 @@
 		099D0B3826E78A2B00960001 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				099D0B3E26E78A2B00960001 /* Errorable.swift */,
 				099D0B4026E78A2B00960001 /* GithubAPI.swift */,
 				099D0B7C26E78DB200960001 /* GithubAPIError.swift */,
 				099D0B4126E78A2B00960001 /* EndpointType.swift */,
@@ -277,7 +272,6 @@
 		099D0B4326E78A2B00960001 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				099D0B4426E78A2B00960001 /* EmptyAPIResponse.swift */,
 				099D0B4526E78A2B00960001 /* Network+Typealias.swift */,
 				099D0B4626E78A2B00960001 /* BaseModels.swift */,
 				099D0B4726E78A2B00960001 /* Request.swift */,
@@ -452,7 +446,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				099D0B5F26E78A2B00960001 /* Errorable.swift in Sources */,
 				099D0B6726E78A2B00960001 /* Request.swift in Sources */,
 				099D0B6526E78A2B00960001 /* Network+Typealias.swift in Sources */,
 				099D0AF726E783EC00960001 /* AppDelegate.swift in Sources */,
@@ -464,7 +457,6 @@
 				099D0B6926E78A2B00960001 /* RequestConfiguration.swift in Sources */,
 				099D0B6A26E78A2B00960001 /* NetworkServiceFactory.swift in Sources */,
 				099D0B6226E78A2B00960001 /* EndpointType.swift in Sources */,
-				099D0B6426E78A2B00960001 /* EmptyAPIResponse.swift in Sources */,
 				099D0B6826E78A2B00960001 /* API.swift in Sources */,
 				099D0AFB26E783EC00960001 /* ContentView.swift in Sources */,
 				099D0B7D26E78DB200960001 /* GithubAPIError.swift in Sources */,

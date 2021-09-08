@@ -19,7 +19,6 @@ final class RequestConfiguration {
         method: HTTPMethod,
         url: URLConvertible,
         headers: [String: String] = [:],
-        testHeaders: [String: String] = [:],
         parameters: Parameters? = nil,
         parameterEncoding: ParameterEncoding = JSONEncoding.default
     ) {

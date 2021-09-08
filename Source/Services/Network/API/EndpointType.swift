@@ -11,6 +11,9 @@ import Foundation
 enum EndpointType {
     
     var endpoint: String {
-        return ""
+        switch self {
+        #warning("remove default when this enum has real case")
+        default: return ""
+        }
     }
 }
