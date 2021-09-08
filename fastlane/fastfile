@@ -1,0 +1,25 @@
+# frozen_string_literal: true
+
+before_all do
+  ensure_bundle_exec
+end
+
+default_platform(:mac)
+
+platform :mac do
+
+  desc 'Sync Certificate'
+  lane :sync_certificate do
+    cert(type:"developer_id_application")
+  end
+
+  desc 'Build Mac app'
+  lane :build do
+    build_mac_app(export_method:"developer-id")
+  end
+
+  desc 'notorize for macOS >=14.5 (only works with Xcode13)'
+  lane :notarize do
+    notarize(package:"GithubNotifications.app")
+  end
+end
