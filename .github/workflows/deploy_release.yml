@@ -67,4 +67,4 @@ jobs:
       - name: Create and Upload Release
         uses: softprops/action-gh-release@v1
         with:
-          files: GithubNotifications.app
+          files: GithubNotifications.zip
