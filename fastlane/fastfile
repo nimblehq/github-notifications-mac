@@ -43,7 +43,7 @@ platform :mac do
   end
 
   desc 'notorize for macOS >=14.5 (only works with Xcode13)'
-  lane :notarize do
+  lane :notarize_app do
     notarize(package:"GithubNotifications.app")
   end
 end
