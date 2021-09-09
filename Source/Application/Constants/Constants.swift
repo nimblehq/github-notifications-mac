@@ -14,4 +14,6 @@ enum Constants {
 
         static let baseURLPath = "https://api.github.com/notifications"
     }
+
+    enum Color { }
 }
