@@ -29,14 +29,13 @@ jobs:
       - name: Bundle install
         run: bundle install
 
-      - name: Cache Pods
+      - name: Cache SPM
         uses: actions/cache@v2
-        id: cocoapodCache
         with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          path: .build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
           restore-keys: |
-            ${{ runner.os }}-pods-
+            ${{ runner.os }}-spm-
 
       - name: Sync Certificate
         run: bundle exec fastlane sync_certificate_ci
