@@ -5,12 +5,10 @@
 //  Copyright © 2020 nimble. All rights reserved.
 //
 import Foundation
+import Combine
 
 protocol API {
 
     func url(forEndpoint endpoint: String) -> String
-    func performRequest(
-        with configuration: RequestConfiguration,
-        completion: @escaping RequestCompletion<Data>
-    ) -> Request
+    func performRequest<T: Decodable>(with configuration: RequestConfiguration) -> AnyPublisher<T, Error>
 }
