@@ -98,3 +98,5 @@ translation-th.json
 *.cer
 GithubNotifications.app.zip
 GithubNotifications.app
+*.xcuserdata
+*.xcuserstate

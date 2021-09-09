@@ -53,13 +53,6 @@ jobs:
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
-      # - name: Notarize App
-      #   run: bundle exec fastlane notarize_app
-      #   env:
-      #     FASTLANE_USERNAME: ${{ secrets.FASTLANE_USERNAME }}
-      #     FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-      #     FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
-
       - name: Package App
         run: bundle exec fastlane package_app
 
