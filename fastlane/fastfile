@@ -31,7 +31,6 @@ platform :mac do
     )
     cert(
       type:"developer_id_application",
-      username: ENV["FASTLANE_USERNAME"],
       team_id: ENV["TEAM_ID"],
       keychain_password: keychain_password
     )
