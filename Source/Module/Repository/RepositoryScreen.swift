@@ -33,8 +33,6 @@ struct RepositoryScreen: View {
             HStack {
                 Spacer()
                 makeAddButton()
-                    .padding(.top, 18.0)
-                    .padding(.bottom, 22.0)
                 Spacer()
             }
 
@@ -65,6 +63,8 @@ extension View {
                 pressedColor: .almostBlack.opacity(0.5)
             )
         )
+        .padding(.top, 18.0)
+        .padding(.bottom, 22.0)
     }
 
     fileprivate func paddingLeft8() -> some View {
