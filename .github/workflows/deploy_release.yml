@@ -53,13 +53,7 @@ jobs:
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
-      - name: Compress Export File
-        uses: papeloto/action-zip@v1
-        with:
-          files: ./GithubNotifications.app
-          dest: GithubNotifications.zip
-
       - name: Create and Upload Release
         uses: softprops/action-gh-release@v1
         with:
-          files: GithubNotifications.zip
+          files: GithubNotifications.app
