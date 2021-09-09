@@ -47,6 +47,10 @@ platform :mac do
 
   desc 'notorize for macOS >=14.5 (only works with Xcode13)'
   lane :notarize_app do
-    notarize(package:"GithubNotifications.app")
+    notarize(
+      package:"GithubNotifications.app",
+      use_notarytool: true,
+      username: ENV['FASTLANE_USERNAME']
+    )
   end
 end
