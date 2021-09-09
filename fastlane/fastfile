@@ -47,6 +47,17 @@ platform :mac do
 
   desc 'notorize for macOS >=14.5 (only works with Xcode13)'
   lane :notarize_app do
-    notarize(package:"GithubNotifications.app")
+    notarize(
+      package:"GithubNotifications.app",
+      username: ENV['FASTLANE_USERNAME']
+    )
+  end
+
+  desc 'zip app'
+  lane :package_app do
+    zip(
+      path: "GithubNotifications.app",
+      output_path: "GithubNotifications.app.zip"
+    )
   end
 end
