@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
     var body: some View {
-        RepositoryScreen()
+        NavigationView {
+            LoginSideBarView()
+            LoginView()
+        }
     }
 }
 
