@@ -95,3 +95,6 @@ apn/
 translation-#{key}.json
 translation-en.json
 translation-th.json
+*.cer
+GithubNotifications.app.zip
+GithubNotifications.app
