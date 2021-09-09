@@ -10,10 +10,11 @@ platform :mac do
 
   desc 'Sync Certificate'
   lane :sync_certificate do
-    cert(
-      type:'developer_id_application',
+    match(
+      type:'developer_id',
       username: ENV['FASTLANE_USERNAME'],
-      team_id: ENV['TEAM_ID']
+      team_id: ENV['TEAM_ID'],
+      app_identifier: ""
     )
   end
 
@@ -29,11 +30,13 @@ platform :mac do
       timeout: 3600,
       lock_when_sleeps: false
     )
-    cert(
-      type:"developer_id_application",
-      username: ENV["FASTLANE_USERNAME"],
-      team_id: ENV["TEAM_ID"],
-      keychain_password: keychain_password
+    match(
+      type:'developer_id',
+      username: ENV['FASTLANE_USERNAME'],
+      team_id: ENV['TEAM_ID'],
+      keychain_name: keychain_name,
+      keychain_password: keychain_password,
+      app_identifier: ""
     )
   end
 
