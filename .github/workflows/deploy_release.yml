@@ -7,7 +7,7 @@ name: Build and Upload Release Asset
 
 jobs:
   build:
-    name: Upload Release Asset
+    name: Build and Upload Release Asset
     runs-on: macos-latest
     steps:
       - name: Cancel Previous Runs
@@ -37,6 +37,7 @@ jobs:
         run: bundle exec fastlane sync_certificate_ci
         env:
           FASTLANE_USERNAME: ${{ secrets.FASTLANE_USERNAME }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
           TEAM_ID: ${{ secrets.TEAM_ID }}
 
@@ -44,6 +45,7 @@ jobs:
         run: bundle exec fastlane build
         env:
           FASTLANE_USERNAME: ${{ secrets.FASTLANE_USERNAME }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
       - name: Compress Export File
