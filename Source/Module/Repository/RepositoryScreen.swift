@@ -62,7 +62,7 @@ extension View {
             RoundedButtonStyle(
                 foregroundColor: .white,
                 backgroundColor: .almostBlack,
-                pressedColor: .border
+                pressedColor: .almostBlack.opacity(0.5)
             )
         )
     }
