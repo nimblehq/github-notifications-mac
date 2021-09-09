@@ -52,4 +52,12 @@ platform :mac do
       username: ENV['FASTLANE_USERNAME']
     )
   end
+
+  desc 'zip app'
+  lane :package_app do
+    zip(
+      path: "GithubNotifications.app",
+      output_path: "GithubNotifications.app.zip"
+    )
+  end
 end
