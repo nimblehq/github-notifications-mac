@@ -34,14 +34,17 @@ jobs:
             ${{ runner.os }}-pods-
 
       - name: Sync Certificate
-        run: bundle exec fastlane sync_certificate
+        run: bundle exec fastlane sync_certificate_ci
         env:
-          APPSTORE_CONNECT_API_KEY: ${{ secrets.APPSTORE_CONNECT_API_KEY }}
+          FASTLANE_USERNAME: ${{ secrets.FASTLANE_USERNAME }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
 
       - name: Build App
         run: bundle exec fastlane build
         env:
-          APPSTORE_CONNECT_API_KEY: ${{ secrets.APPSTORE_CONNECT_API_KEY }}
+          FASTLANE_USERNAME: ${{ secrets.FASTLANE_USERNAME }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
       - name: Compress Export File
         uses: papeloto/action-zip@v1

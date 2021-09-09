@@ -10,7 +10,31 @@ platform :mac do
 
   desc 'Sync Certificate'
   lane :sync_certificate do
-    cert(type:"developer_id_application")
+    cert(
+      type:'developer_id_application',
+      username: ENV['FASTLANE_USERNAME'],
+      team_id: ENV['TEAM_ID']
+    )
+  end
+
+  desc 'Sync Certificate for CICD'
+  lane :sync_certificate_ci do
+    keychain_name = 'keychain_name'
+    keychain_password = 'keychain_password'
+    create_keychain(
+      name: keychain_name,
+      password: keychain_password,
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: false
+    )
+    cert(
+      type:"developer_id_application",
+      username: ENV["FASTLANE_USERNAME"],
+      team_id: ENV["TEAM_ID"],
+      keychain_password: keychain_password
+    )
   end
 
   desc 'Build Mac app'
