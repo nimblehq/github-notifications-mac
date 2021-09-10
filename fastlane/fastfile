@@ -61,4 +61,13 @@ platform :mac do
       output_path: "GithubNotifications.app.zip"
     )
   end
+
+  desc 'Test Build'
+  lane :scan_build do
+    build_mac_app(
+      configuration: 'Debug',
+      skip_codesigning:true,
+      skip_archive:true
+    )
+  end
 end
