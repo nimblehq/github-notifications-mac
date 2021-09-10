@@ -29,6 +29,10 @@
 		099D0B7B26E78B7400960001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B7A26E78B7400960001 /* Constants.swift */; };
 		099D0B7D26E78DB200960001 /* GithubAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B7C26E78DB200960001 /* GithubAPIError.swift */; };
 		099D0B8026E85ACA00960001 /* NimbleExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 099D0B7F26E85ACA00960001 /* NimbleExtension */; };
+		9001258626E9E9B500C2643C /* RepositoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001258526E9E9B500C2643C /* RepositoryScreen.swift */; };
+		9001258F26E9F26000C2643C /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001258E26E9F26000C2643C /* Color+Hex.swift */; };
+		9001259326E9FB8900C2643C /* View+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001259226E9FB8900C2643C /* View+Border.swift */; };
+		900125B226EA058300C2643C /* RoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900125B126EA058300C2643C /* RoundedButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,10 @@
 		099D0B4C26E78A2B00960001 /* DecoderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderFactory.swift; sourceTree = "<group>"; };
 		099D0B7A26E78B7400960001 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		099D0B7C26E78DB200960001 /* GithubAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIError.swift; sourceTree = "<group>"; };
+		9001258526E9E9B500C2643C /* RepositoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryScreen.swift; sourceTree = "<group>"; };
+		9001258E26E9F26000C2643C /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		9001259226E9FB8900C2643C /* View+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Border.swift"; sourceTree = "<group>"; };
+		900125B126EA058300C2643C /* RoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +173,11 @@
 			isa = PBXGroup;
 			children = (
 				099D0B3026E787B200960001 /* Application */,
+				9001258C26E9F24600C2643C /* Extensions */,
+				9001258B26E9F00F00C2643C /* Models */,
 				099D0B3126E787C400960001 /* Module */,
 				099D0B3626E789FE00960001 /* Services */,
+				9001258726E9EFD300C2643C /* Views */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -203,6 +214,7 @@
 		099D0B3126E787C400960001 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				9001258426E9E98000C2643C /* Repository */,
 				099D0AFA26E783EC00960001 /* ContentView.swift */,
 			);
 			path = Module;
@@ -253,7 +265,6 @@
 			children = (
 				099D0B3826E78A2B00960001 /* API */,
 				099D0B4A26E78A2B00960001 /* Factory */,
-				099D0B4D26E78A2B00960001 /* Services */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -290,19 +301,52 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		099D0B4D26E78A2B00960001 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		099D0B7926E78B6200960001 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				099D0B7A26E78B7400960001 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		9001258426E9E98000C2643C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				9001258526E9E9B500C2643C /* RepositoryScreen.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		9001258726E9EFD300C2643C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				900125B026EA057400C2643C /* Buttons */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9001258B26E9F00F00C2643C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9001258C26E9F24600C2643C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9001258E26E9F26000C2643C /* Color+Hex.swift */,
+				9001259226E9FB8900C2643C /* View+Border.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		900125B026EA057400C2643C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				900125B126EA058300C2643C /* RoundedButtonStyle.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,8 +490,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9001258F26E9F26000C2643C /* Color+Hex.swift in Sources */,
 				099D0B6726E78A2B00960001 /* Request.swift in Sources */,
 				099D0B6526E78A2B00960001 /* Network+Typealias.swift in Sources */,
+				900125B226EA058300C2643C /* RoundedButtonStyle.swift in Sources */,
 				099D0AF726E783EC00960001 /* AppDelegate.swift in Sources */,
 				099D0B6B26E78A2B00960001 /* DecoderFactory.swift in Sources */,
 				099D0B6626E78A2B00960001 /* BaseModels.swift in Sources */,
@@ -460,6 +506,8 @@
 				099D0B6826E78A2B00960001 /* API.swift in Sources */,
 				099D0AFB26E783EC00960001 /* ContentView.swift in Sources */,
 				099D0B7D26E78DB200960001 /* GithubAPIError.swift in Sources */,
+				9001259326E9FB8900C2643C /* View+Border.swift in Sources */,
+				9001258626E9E9B500C2643C /* RepositoryScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +691,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.nimblehq.GithubNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "2,6";
 			};
@@ -672,6 +721,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "2,6";
 			};
