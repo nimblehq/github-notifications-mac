@@ -8,6 +8,7 @@
 
 import Alamofire
 import Foundation
+import Combine
 
 final class GithubAPI: API {
 
@@ -34,32 +35,24 @@ final class GithubAPI: API {
         return url?.absoluteString ?? baseURL
     }
 
-    func performRequest(
-        with configuration: RequestConfiguration,
-        completion: @escaping RequestCompletion<Data>
-    ) -> Request {
-        session.request(
-            configuration.url,
-            method: configuration.method,
-            parameters: configuration.parameters,
-            encoding: configuration.parameterEncoding,
-            headers: configuration.headers
-        )
-        .validate(statusCode: 200...599)
-        .responseData { dataResponse in
-            switch dataResponse.result {
-            case .success(let data):
-                guard let statusCode = dataResponse.response?.statusCode else {
-                    return completion(.failure(NimbleAPIError.genericError))
+    func performRequest<T: Decodable>(with configuration: RequestConfiguration) -> AnyPublisher<T, Error> {
+        Future { promise in
+            self.session.request(
+                configuration.url,
+                method: configuration.method,
+                parameters: configuration.parameters,
+                encoding: configuration.parameterEncoding,
+                headers: configuration.headers
+            )
+            .responseDecodable(decoder: self.parser, completionHandler: { (response: DataResponse<T, AFError>) in
+                switch response.result {
+                    case .success(let value):
+                        promise(.success(value))
+                    case .failure(let error):
+                        promise(.failure(error))
                 }
-                if 200 ... 299 ~= statusCode {
-                    completion(.success(data))
-                } else {
-                    completion(.failure(NimbleAPIError.genericError))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            })
         }
+        .eraseToAnyPublisher()
     }
 }
