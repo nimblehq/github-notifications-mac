@@ -18,7 +18,7 @@
 		0902828C26EB54220010F02E /* GeneralScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902828B26EB54220010F02E /* GeneralScreen.swift */; };
 		0902828E26EB55D50010F02E /* SettingSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902828D26EB55D50010F02E /* SettingSwitchView.swift */; };
 		0902829126EB603C0010F02E /* SwitchToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902829026EB603C0010F02E /* SwitchToggleStyle.swift */; };
-		0902829326EB64D20010F02E /* GeneralScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902829226EB64D20010F02E /* GeneralScreenViewModel.swift */; };
+		0902829326EB64D20010F02E /* GeneralScreenObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902829226EB64D20010F02E /* GeneralScreenObservable.swift */; };
 		099D0AF726E783EC00960001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0AF626E783EC00960001 /* AppDelegate.swift */; };
 		099D0AF926E783EC00960001 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0AF826E783EC00960001 /* SceneDelegate.swift */; };
 		099D0AFB26E783EC00960001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0AFA26E783EC00960001 /* ContentView.swift */; };
@@ -84,7 +84,7 @@
 		0902828B26EB54220010F02E /* GeneralScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralScreen.swift; sourceTree = "<group>"; };
 		0902828D26EB55D50010F02E /* SettingSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchView.swift; sourceTree = "<group>"; };
 		0902829026EB603C0010F02E /* SwitchToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchToggleStyle.swift; sourceTree = "<group>"; };
-		0902829226EB64D20010F02E /* GeneralScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralScreenViewModel.swift; sourceTree = "<group>"; };
+		0902829226EB64D20010F02E /* GeneralScreenObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralScreenObservable.swift; sourceTree = "<group>"; };
 		099D0AF326E783EC00960001 /* GithubNotifications.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubNotifications.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		099D0AF626E783EC00960001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		099D0AF826E783EC00960001 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				0902828B26EB54220010F02E /* GeneralScreen.swift */,
-				0902829226EB64D20010F02E /* GeneralScreenViewModel.swift */,
+				0902829226EB64D20010F02E /* GeneralScreenObservable.swift */,
 				09D7774C26EB6B4E00417BD1 /* SettingSwitch */,
 			);
 			path = General;
@@ -708,6 +708,7 @@
 				900125B626EA18AD00C2643C /* SearchRepoScreen.swift in Sources */,
 				0902828426EB361F0010F02E /* Keychain.swift in Sources */,
 				0902829326EB64D20010F02E /* GeneralScreenViewModel.swift in Sources */,
+				0902829326EB64D20010F02E /* GeneralScreenObservable.swift in Sources */,
 				099D0B6126E78A2B00960001 /* GithubAPI.swift in Sources */,
 				099D0B6926E78A2B00960001 /* RequestConfiguration.swift in Sources */,
 				099D0B6A26E78A2B00960001 /* NetworkServiceFactory.swift in Sources */,

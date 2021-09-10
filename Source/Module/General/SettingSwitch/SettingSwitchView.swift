@@ -11,19 +11,18 @@ import Combine
 
 struct SettingSwitchView: View {
 
-    var title: String
-    @Binding var isOn: Bool
+    var viewModel: SettingSwitchViewModel
 
     var body: some View {
         HStack {
-            Text(title)
+            Text(viewModel.title)
                 .bold()
             Spacer()
-            Toggle(isOn: $isOn, label: {})
+            Toggle(isOn: viewModel.$isOn, label: {})
             .toggleStyle(SwitchToggleStyle())
         }
         .onTapGesture {
-            isOn.toggle()
+            viewModel.isOn.toggle()
         }
         .padding(.vertical, 20.0)
     }
@@ -31,6 +30,6 @@ struct SettingSwitchView: View {
 
 struct SettingSwitchView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingSwitchView(title: "Preview", isOn: .constant(true))
+        SettingSwitchView(viewModel: SettingSwitchViewModel(title: "Preview", isOn: .constant(true)))
     }
 }

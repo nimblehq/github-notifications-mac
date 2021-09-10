@@ -23,14 +23,10 @@ struct GeneralScreen: View {
 
     private func makeSettingListView() -> some View {
         List {
-            SettingSwitchView(
-                title: "Play sound",
-                isOn: generalScreenObservable.$notificationHasSound
-            )
-            SettingSwitchView(
-                title: "Repeat review requested notifications",
-                isOn: generalScreenObservable.$repeatPullRequestNotification
-            )
+            let generalSettings = generalScreenObservable.getGeneralSettings()
+            ForEach(generalSettings.indices) {
+                SettingSwitchView(viewModel: generalSettings[$0])
+            }
         }
         .padding(.leading, 8.0)
         .navigationTitle("General")
