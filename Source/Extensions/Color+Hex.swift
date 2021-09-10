@@ -10,8 +10,16 @@ import SwiftUI
 
 extension Color {
 
+    /// 0xECECEC
     static let border = Color(hex: 0xECECEC)
+
+    /// 0xD1D1D1
+    static let darkBorder = Color(hex: 0xD1D1D1)
+
+    /// 0x797979
     static let brightGray = Color(hex: 0x797979)
+
+    /// 0x232526
     static let almostBlack = Color(hex: 0x232526)
 
     init(hex: Int) {

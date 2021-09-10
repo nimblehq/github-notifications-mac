@@ -10,6 +10,8 @@ import SwiftUI
 
 struct RepositoryScreen: View {
 
+    @State fileprivate var showSearchScreen: Bool = false
+
     var body: some View {
         NavigationView {
             NavigationView { }
@@ -26,32 +28,43 @@ struct RepositoryScreen: View {
                 .paddingLeft8()
                 .foregroundColor(.brightGray)
 
-            List { }
+            ScrollView(.vertical) {
+                LazyVStack(alignment: .leading) {
+                    ForEach(Array(RepositoryCellViewModel.dummy.enumerated()), id: \.offset) { index, item in
+                        RepositoryCell(viewModel: item)
+                            .background(
+                                index % 2 == 0 ? Color.white : Color.gray.opacity(0.1)
+                            )
+                    }
+                }
+                .cornerRadius(8.0)
+            }
             .border(.border, width: 1.0, radius: 8.0)
             .paddingLeft8()
 
             HStack {
                 Spacer()
                 makeAddButton()
+                    .background(NavigationLink(
+                        destination: SearchRepoScreen(showSearchScreen: $showSearchScreen),
+                        isActive: $showSearchScreen,
+                        label: { EmptyView() }
+                    ))
                 Spacer()
             }
-
         }
         .navigationTitle("Repositories")
         .foregroundColor(.almostBlack)
     }
 }
 
-extension View {
-}
-
 // MARK: - Private
 
-extension View {
+extension RepositoryScreen {
 
-    func makeAddButton() -> some View {
+    fileprivate func makeAddButton() -> some View {
         Button {
-            print("Add new did tap")
+            showSearchScreen = true
         } label: {
             Text("Add New")
                 .frame(maxWidth: 160.0, maxHeight: 18.0)
@@ -66,6 +79,9 @@ extension View {
         .padding(.top, 18.0)
         .padding(.bottom, 22.0)
     }
+}
+
+extension View {
 
     fileprivate func paddingLeft8() -> some View {
         padding(.leading, 8.0)
