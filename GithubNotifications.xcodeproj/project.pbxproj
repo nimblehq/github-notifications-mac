@@ -33,10 +33,8 @@
 		9001258F26E9F26000C2643C /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001258E26E9F26000C2643C /* Color+Hex.swift */; };
 		9001259326E9FB8900C2643C /* View+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001259226E9FB8900C2643C /* View+Border.swift */; };
 		900125B226EA058300C2643C /* RoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900125B126EA058300C2643C /* RoundedButtonStyle.swift */; };
-		8458AF7B26E8731F009F1B9B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AF7A26E8731F009F1B9B /* LoginView.swift */; };
-		849FF13D26E8A8330006F955 /* Font+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FF13C26E8A8330006F955 /* Font+Application.swift */; };
+		8458AF7B26E8731F009F1B9B /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AF7A26E8731F009F1B9B /* LoginScreen.swift */; };
 		849FF14026E8B2BC0006F955 /* RoundedCornersButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FF13F26E8B2BC0006F955 /* RoundedCornersButtonStyle.swift */; };
-		849FF14226E921F50006F955 /* LoginSideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FF14126E921F50006F955 /* LoginSideBarView.swift */; };
 		84C9E91526E9D18F00B56DD4 /* TextLabelWithHyperLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E91426E9D18F00B56DD4 /* TextLabelWithHyperLink.swift */; };
 		84C9E91926E9F12900B56DD4 /* NSMutableAttributedString+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E91826E9F12900B56DD4 /* NSMutableAttributedString+Range.swift */; };
 /* End PBXBuildFile section */
@@ -89,10 +87,8 @@
 		9001258E26E9F26000C2643C /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		9001259226E9FB8900C2643C /* View+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Border.swift"; sourceTree = "<group>"; };
 		900125B126EA058300C2643C /* RoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonStyle.swift; sourceTree = "<group>"; };
-		8458AF7A26E8731F009F1B9B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		849FF13C26E8A8330006F955 /* Font+Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Application.swift"; sourceTree = "<group>"; };
+		8458AF7A26E8731F009F1B9B /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		849FF13F26E8B2BC0006F955 /* RoundedCornersButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersButtonStyle.swift; sourceTree = "<group>"; };
-		849FF14126E921F50006F955 /* LoginSideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSideBarView.swift; sourceTree = "<group>"; };
 		84C9E91426E9D18F00B56DD4 /* TextLabelWithHyperLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelWithHyperLink.swift; sourceTree = "<group>"; };
 		84C9E91826E9F12900B56DD4 /* NSMutableAttributedString+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Range.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,7 +227,6 @@
 				9001258426E9E98000C2643C /* Repository */,
 				8458AF7926E87311009F1B9B /* Login */,
 				849FF14326E925470006F955 /* Main */,
-				849FF14426E925690006F955 /* SideBar */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -369,7 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				84C9E91326E9D17000B56DD4 /* Views */,
-				8458AF7A26E8731F009F1B9B /* LoginView.swift */,
+				8458AF7A26E8731F009F1B9B /* LoginScreen.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -377,7 +372,6 @@
 		849FF13B26E8A8230006F955 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				849FF13C26E8A8330006F955 /* Font+Application.swift */,
 				84C9E91826E9F12900B56DD4 /* NSMutableAttributedString+Range.swift */,
 			);
 			path = Extensions;
@@ -397,14 +391,6 @@
 				099D0AFA26E783EC00960001 /* ContentView.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		849FF14426E925690006F955 /* SideBar */ = {
-			isa = PBXGroup;
-			children = (
-				849FF14126E921F50006F955 /* LoginSideBarView.swift */,
-			);
-			path = SideBar;
 			sourceTree = "<group>";
 		};
 		84C9E91326E9D17000B56DD4 /* Views */ = {
@@ -572,13 +558,11 @@
 				099D0AF726E783EC00960001 /* AppDelegate.swift in Sources */,
 				099D0B6B26E78A2B00960001 /* DecoderFactory.swift in Sources */,
 				099D0B6626E78A2B00960001 /* BaseModels.swift in Sources */,
-				8458AF7B26E8731F009F1B9B /* LoginView.swift in Sources */,
+				8458AF7B26E8731F009F1B9B /* LoginScreen.swift in Sources */,
 				099D0AF926E783EC00960001 /* SceneDelegate.swift in Sources */,
 				099D0B7B26E78B7400960001 /* Constants.swift in Sources */,
 				84C9E91526E9D18F00B56DD4 /* TextLabelWithHyperLink.swift in Sources */,
-				849FF13D26E8A8330006F955 /* Font+Application.swift in Sources */,
 				099D0B6126E78A2B00960001 /* GithubAPI.swift in Sources */,
-				849FF14226E921F50006F955 /* LoginSideBarView.swift in Sources */,
 				099D0B6926E78A2B00960001 /* RequestConfiguration.swift in Sources */,
 				099D0B6A26E78A2B00960001 /* NetworkServiceFactory.swift in Sources */,
 				099D0B6226E78A2B00960001 /* EndpointType.swift in Sources */,

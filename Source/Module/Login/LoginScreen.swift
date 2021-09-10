@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  LoginScreen.swift
 //  GithubNotifications
 //
 //  Created by Chananchida F. on 9/8/21.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct LoginScreen: View {
 
     private let loginDescription: [TextContent] = [
         .text("To generate a token, go to Github, "),
@@ -22,10 +22,39 @@ struct LoginView: View {
     
     @State private var token: String = ""
     
+    init() {
+        UITableViewCell.appearance().selectionStyle = .none
+    }
+    
     var body: some View {
+        NavigationView {
+            makeSideBarView()
+            makeLoginView()
+        }
+    }
+    
+    private func makeSideBarView() -> some View {
+        List {
+            NavigationLink(
+                destination: makeLoginView(),
+                label: {
+                    Text("Access Token")
+                        .font(.title2)
+                        .bold()
+                }
+            )
+            .padding(.top, 50.0)
+            .listRowBackground(Color(UIColor.systemGroupedBackground))
+        }
+        .listStyle(SidebarListStyle())
+        .navigationTitle("Login")
+    }
+    
+    private func makeLoginView() -> some View {
         VStack(alignment: .leading, spacing: 16.0) {
             Text("Token")
-                .font(.smallTitle)
+                .font(.title3)
+                .bold()
                 .padding(.top, 50.0)
             
             TextField("The 40 characters token generated on Github", text: $token)
@@ -45,7 +74,7 @@ struct LoginView: View {
                     action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/,
                     label: {
                         Text("Login")
-                            .font(.smallDescription)
+                            .font(.body)
                             .foregroundColor(.white)
                     }
                 )
@@ -62,6 +91,6 @@ struct LoginView: View {
 struct LoginScreen_Previews: PreviewProvider {
     
     static var previews: some View {
-        LoginView()
+        LoginScreen()
     }
 }
