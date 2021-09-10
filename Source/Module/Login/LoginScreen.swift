@@ -27,27 +27,7 @@ struct LoginScreen: View {
     }
     
     var body: some View {
-        NavigationView {
-            makeSideBarView()
-            makeLoginView()
-        }
-    }
-    
-    private func makeSideBarView() -> some View {
-        List {
-            NavigationLink(
-                destination: makeLoginView(),
-                label: {
-                    Text("Access Token")
-                        .font(.title2)
-                        .bold()
-                }
-            )
-            .padding(.top, 50.0)
-            .listRowBackground(Color(UIColor.systemGroupedBackground))
-        }
-        .listStyle(SidebarListStyle())
-        .navigationTitle("Login")
+        makeLoginView()
     }
     
     private func makeLoginView() -> some View {

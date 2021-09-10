@@ -13,13 +13,7 @@ struct RepositoryScreen: View {
     @State fileprivate var showSearchScreen: Bool = false
 
     var body: some View {
-        NavigationView {
-            NavigationView { }
-                .navigationTitle("Preferences")
-
-            makeRepoListView()
-                .padding()
-        }
+        makeRepoListView()
     }
 
     private func makeRepoListView() -> some View {
@@ -53,6 +47,7 @@ struct RepositoryScreen: View {
                 Spacer()
             }
         }
+        .padding()
         .navigationTitle("Repositories")
         .foregroundColor(.almostBlack)
     }
