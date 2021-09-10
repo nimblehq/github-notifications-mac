@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KeychainAccess
+import KeychainSwift
 
 protocol KeychainProtocol: AnyObject {
 
@@ -25,18 +25,18 @@ final class Keychain: KeychainProtocol {
 
     static let `default` = Keychain()
 
-    private let keychain: KeychainAccess.Keychain
+    private let keychain: KeychainSwift
 
-    private init(service: String? = nil, accessGroup: String? = nil) {
-        guard let service = service else {
-            keychain = KeychainAccess.Keychain()
+    private init(keyPrefix: String? = nil) {
+        guard let keyPrefix = keyPrefix else {
+            keychain = KeychainSwift()
             return
         }
-        keychain = KeychainAccess.Keychain(service: service, accessGroup: accessGroup ?? "")
+        keychain = KeychainSwift(keyPrefix: keyPrefix)
     }
 
     func remove<T>(_ key: Keychain.Key<T>) throws {
-        try keychain.remove(key.key)
+        keychain.delete(key.key)
     }
 
     /// Convert value to array to allow saving primitive type then save to Keychain
@@ -44,7 +44,7 @@ final class Keychain: KeychainProtocol {
     func set<T: Encodable>(_ value: T, for key: Key<T>) throws {
         let array = [value]
         do {
-            try keychain.set(JSONEncoder().encode(array), key: key.key)
+            try keychain.set(JSONEncoder().encode(array), forKey: key.key)
         }
         catch let error {
             print(error)

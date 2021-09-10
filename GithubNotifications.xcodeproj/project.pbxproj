@@ -14,6 +14,7 @@
 		0902828126EB35350010F02E /* AuthenticatedInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902828026EB35350010F02E /* AuthenticatedInterceptor.swift */; };
 		0902828426EB361F0010F02E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902828326EB361F0010F02E /* Keychain.swift */; };
 		0902828626EB364B0010F02E /* KeychainKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902828526EB364B0010F02E /* KeychainKey.swift */; };
+		0902828926EB47360010F02E /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0902828826EB47360010F02E /* KeychainSwift */; };
 		099D0AF726E783EC00960001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0AF626E783EC00960001 /* AppDelegate.swift */; };
 		099D0AF926E783EC00960001 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0AF826E783EC00960001 /* SceneDelegate.swift */; };
 		099D0AFB26E783EC00960001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0AFA26E783EC00960001 /* ContentView.swift */; };
@@ -22,7 +23,6 @@
 		099D0B0326E783F100960001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 099D0B0126E783F100960001 /* LaunchScreen.storyboard */; };
 		099D0B0E26E783F200960001 /* GithubNotificationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B0D26E783F200960001 /* GithubNotificationsTests.swift */; };
 		099D0B1926E783F200960001 /* GithubNotificationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B1826E783F200960001 /* GithubNotificationsUITests.swift */; };
-		099D0B2926E7872F00960001 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 099D0B2826E7872F00960001 /* KeychainAccess */; };
 		099D0B2C26E7875400960001 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 099D0B2B26E7875400960001 /* Alamofire */; };
 		099D0B6126E78A2B00960001 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B4026E78A2B00960001 /* GithubAPI.swift */; };
 		099D0B6526E78A2B00960001 /* Network+Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B4526E78A2B00960001 /* Network+Typealias.swift */; };
@@ -119,7 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				099D0B2C26E7875400960001 /* Alamofire in Frameworks */,
-				099D0B2926E7872F00960001 /* KeychainAccess in Frameworks */,
+				0902828926EB47360010F02E /* KeychainSwift in Frameworks */,
 				099D0B8026E85ACA00960001 /* NimbleExtension in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,9 +512,9 @@
 			);
 			name = GithubNotifications;
 			packageProductDependencies = (
-				099D0B2826E7872F00960001 /* KeychainAccess */,
 				099D0B2B26E7875400960001 /* Alamofire */,
 				099D0B7F26E85ACA00960001 /* NimbleExtension */,
+				0902828826EB47360010F02E /* KeychainSwift */,
 			);
 			productName = GithubNotifications;
 			productReference = 099D0AF326E783EC00960001 /* GithubNotifications.app */;
@@ -589,9 +589,9 @@
 			);
 			mainGroup = 099D0AEA26E783EC00960001;
 			packageReferences = (
-				099D0B2726E7872F00960001 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				099D0B2A26E7875400960001 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				099D0B7E26E85ACA00960001 /* XCRemoteSwiftPackageReference "NimbleExtension" */,
+				0902828726EB47360010F02E /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 099D0AF426E783EC00960001 /* Products */;
 			projectDirPath = "";
@@ -652,7 +652,6 @@
 				0902827726EB29270010F02E /* NotificationRequestConfiguration.swift in Sources */,
 				099D0B7B26E78B7400960001 /* Constants.swift in Sources */,
 				84C9E91526E9D18F00B56DD4 /* TextLabelWithHyperLink.swift in Sources */,
-				099D0B6126E78A2B00960001 /* GithubAPI.swift in Sources */,
 				099D0B6226E78A2B00960001 /* EndpointType.swift in Sources */,
 				900125B626EA18AD00C2643C /* SearchRepoScreen.swift in Sources */,
 				0902828426EB361F0010F02E /* Keychain.swift in Sources */,
@@ -865,7 +864,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GithubNotifications/GithubNotifications.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"GithubNotifications/Preview Content\"";
 				DEVELOPMENT_TEAM = 4TWS7E2EPE;
@@ -1015,12 +1014,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		099D0B2726E7872F00960001 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+		0902828726EB47360010F02E /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.2;
+				minimumVersion = 19.0.0;
 			};
 		};
 		099D0B2A26E7875400960001 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -1042,10 +1041,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		099D0B2826E7872F00960001 /* KeychainAccess */ = {
+		0902828826EB47360010F02E /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 099D0B2726E7872F00960001 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
+			package = 0902828726EB47360010F02E /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 		099D0B2B26E7875400960001 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
