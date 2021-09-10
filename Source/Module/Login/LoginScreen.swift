@@ -76,9 +76,16 @@ struct LoginScreen: View {
                         Text("Login")
                             .font(.body)
                             .foregroundColor(.white)
+                            .frame(maxWidth: 160.0, maxHeight: 18.0)
                     }
                 )
-                .buttonStyle(RoundedCornersStyle())
+                .buttonStyle(
+                    RoundedButtonStyle(
+                        foregroundColor: .white,
+                        backgroundColor: .almostBlack,
+                        pressedColor: .almostBlack.opacity(0.5)
+                    )
+                )
             }
             
             Spacer()
