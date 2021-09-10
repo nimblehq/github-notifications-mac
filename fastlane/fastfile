@@ -8,9 +8,36 @@ default_platform(:mac)
 
 platform :mac do
 
-  desc 'Sync Certificate'
+  desc 'Match Certificate'
   lane :sync_certificate do
-    cert(type:"developer_id_application")
+    match(
+      type:'developer_id',
+      username: ENV['FASTLANE_USERNAME'],
+      team_id: ENV['TEAM_ID'],
+      app_identifier: ""
+    )
+  end
+
+  desc 'Match Certificate for CICD'
+  lane :sync_certificate_ci do
+    keychain_name = 'keychain_name'
+    keychain_password = 'keychain_password'
+    create_keychain(
+      name: keychain_name,
+      password: keychain_password,
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: false
+    )
+    match(
+      type:'developer_id',
+      username: ENV['FASTLANE_USERNAME'],
+      team_id: ENV['TEAM_ID'],
+      keychain_name: keychain_name,
+      keychain_password: keychain_password,
+      app_identifier: ""
+    )
   end
 
   desc 'Build Mac app'
@@ -19,7 +46,18 @@ platform :mac do
   end
 
   desc 'notorize for macOS >=14.5 (only works with Xcode13)'
-  lane :notarize do
-    notarize(package:"GithubNotifications.app")
+  lane :notarize_app do
+    notarize(
+      package:"GithubNotifications.app",
+      username: ENV['FASTLANE_USERNAME']
+    )
+  end
+
+  desc 'zip app'
+  lane :package_app do
+    zip(
+      path: "GithubNotifications.app",
+      output_path: "GithubNotifications.app.zip"
+    )
   end
 end

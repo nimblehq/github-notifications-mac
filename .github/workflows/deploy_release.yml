@@ -1,0 +1,62 @@
+on:
+  push:
+    tags:
+    - 'v*'
+
+name: Build and Upload Release Asset
+
+jobs:
+  build:
+    name: Build and Upload Release Asset
+    runs-on: macos-11
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.5.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      # Set fetch-depth (default: 1) to get whole tree
+        with:
+          fetch-depth: 0
+
+      - name: Install SSH key
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+              
+      - name: Bundle install
+        run: bundle install
+
+      - name: Cache SPM
+        uses: actions/cache@v2
+        with:
+          path: .build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Sync Certificate
+        run: bundle exec fastlane sync_certificate_ci
+        env:
+          FASTLANE_USERNAME: ${{ secrets.FASTLANE_USERNAME }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+
+      - name: Build App
+        run: bundle exec fastlane build
+        env:
+          FASTLANE_USERNAME: ${{ secrets.FASTLANE_USERNAME }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+
+      - name: Package App
+        run: bundle exec fastlane package_app
+
+      - name: Create and Upload Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: GithubNotifications.app.zip
