@@ -41,8 +41,9 @@ final class GithubAPI: API {
                 configuration.url,
                 method: configuration.method,
                 parameters: configuration.parameters,
-                encoding: configuration.parameterEncoding,
-                headers: configuration.headers
+                encoding: configuration.encoding,
+                headers: configuration.headers,
+                interceptor: configuration.interceptor
             )
             .responseDecodable(decoder: self.parser, completionHandler: { (response: DataResponse<T, AFError>) in
                 switch response.result {

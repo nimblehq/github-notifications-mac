@@ -5,27 +5,44 @@
 //  Copyright © 2020 nimble. All rights reserved.
 //
 
+import Foundation
 import Alamofire
 
-final class RequestConfiguration {
+protocol RequestConfiguration {
 
-    let method: HTTPMethod
-    let url: URLConvertible
-    let headers: HTTPHeaders
-    let parameters: Parameters?
-    let parameterEncoding: ParameterEncoding
+    var baseURL: String { get }
 
-    init(
-        method: HTTPMethod,
-        url: URLConvertible,
-        headers: [String: String] = [:],
-        parameters: Parameters? = nil,
-        parameterEncoding: ParameterEncoding = JSONEncoding.default
-    ) {
-        self.method = method
-        self.url = url
-        self.headers = HTTPHeaders(headers)
-        self.parameters = parameters
-        self.parameterEncoding = parameterEncoding
+    var endpoint: String { get }
+
+    var method: HTTPMethod { get }
+
+    var url: URLConvertible { get }
+
+    var parameters: Parameters? { get }
+
+    var encoding: ParameterEncoding { get }
+
+    var headers: HTTPHeaders? { get }
+
+    var interceptor: RequestInterceptor? { get }
+}
+
+extension RequestConfiguration {
+
+    var url: URLConvertible {
+        let url = URL(string: baseURL)?.appendingPathComponent(endpoint)
+        return url?.absoluteString ?? "\(baseURL)\(endpoint)"
+    }
+
+    var parameters: Parameters? {
+        nil
+    }
+
+    var headers: HTTPHeaders? {
+        nil
+    }
+
+    var interceptor: RequestInterceptor? {
+        nil
     }
 }
