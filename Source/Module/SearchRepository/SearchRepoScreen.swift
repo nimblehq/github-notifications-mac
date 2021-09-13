@@ -1,5 +1,5 @@
 //
-//  RepositoryScreen.swift
+//  SearchRepoScreen.swift
 //  GithubNotifications
 //
 //  Created by Su T. Nguyen on 09/09/2021.
@@ -8,19 +8,23 @@
 
 import SwiftUI
 
-struct RepositoryScreen: View {
+struct SearchRepoScreen: View {
 
-    @State fileprivate var showSearchScreen: Bool = false
+    @Binding var showSearchScreen: Bool
+
+    @State private var searchText = "" {
+        didSet {
+            print(searchText)
+        }
+    }
+    @State private var isShowing = true
 
     var body: some View {
-        makeRepoListView()
-    }
-
-    private func makeRepoListView() -> some View {
         VStack(alignment: .leading) {
-            Text("You will receive all notifications of these repositories.")
+            SearchBar(text: $searchText, placeholder: "Search repositories to notify")
+                .border(.darkBorder, width: 1.0, radius: 8.0)
+                .frame(maxWidth: .infinity)
                 .paddingLeft8()
-                .foregroundColor(.brightGray)
 
             ScrollView(.vertical) {
                 LazyVStack(alignment: .leading) {
@@ -39,11 +43,6 @@ struct RepositoryScreen: View {
             HStack {
                 Spacer()
                 makeAddButton()
-                    .background(NavigationLink(
-                        destination: SearchRepoScreen(showSearchScreen: $showSearchScreen),
-                        isActive: $showSearchScreen,
-                        label: { EmptyView() }
-                    ))
                 Spacer()
             }
         }
@@ -55,13 +54,13 @@ struct RepositoryScreen: View {
 
 // MARK: - Private
 
-extension RepositoryScreen {
+extension SearchRepoScreen {
 
     fileprivate func makeAddButton() -> some View {
         Button {
-            showSearchScreen = true
+            showSearchScreen = false
         } label: {
-            Text("Add New")
+            Text("Done")
                 .frame(maxWidth: 160.0, maxHeight: 18.0)
         }
         .buttonStyle(
@@ -80,11 +79,5 @@ extension View {
 
     fileprivate func paddingLeft8() -> some View {
         padding(.leading, 8.0)
-    }
-}
-
-struct RepositoryScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        RepositoryScreen()
     }
 }
