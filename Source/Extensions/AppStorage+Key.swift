@@ -13,5 +13,10 @@ extension AppStorage {
     enum Keys: String {
         case notificationHasSound
         case repeatPullRequestNotification
+
+
+        func callAsFunction() -> String {
+            self.rawValue
+        }
     }
 }

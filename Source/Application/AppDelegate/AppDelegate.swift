@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
 
     func setUpNetworkPoll() {
-        networkPoll = NetworkPoll(notificationService: NetworkServiceFactory.shared.createNotificationSercice())
+        networkPoll = NetworkPoll(notificationService: NetworkServiceFactory.shared.createNotificationService())
         pollNotificationSubscription = networkPoll?.pollNotification(60)
             .sink(receiveValue: { models in
                 #warning("Show notification for received models")

@@ -8,13 +8,31 @@
 
 import SwiftUI
 
-class GeneralScreenObservable: ObservableObject {
+protocol GeneralScreenObservableProtocol {
 
-    @AppStorage(AppStorage<Any>.Keys.notificationHasSound.rawValue)
-    private var notificationHasSound: Bool = true
+    func getGeneralSettings() -> [SettingSwitchViewModel]
+}
+
+class GeneralScreenObservable: ObservableObject, GeneralScreenObservableProtocol {
+
+    init(store: UserDefaults = UserDefaults.standard) {
+        _notificationHasSound = AppStorage(
+            wrappedValue: true,
+            AppStorage<Any>.Keys.notificationHasSound(),
+            store: store
+        )
+        _repeatPullRequestNotification = AppStorage(
+            wrappedValue: false,
+            AppStorage<Any>.Keys.repeatPullRequestNotification(),
+            store: store
+        )
+    }
+
+    @AppStorage
+    private var notificationHasSound: Bool
     
-    @AppStorage(AppStorage<Any>.Keys.repeatPullRequestNotification.rawValue)
-    private var repeatPullRequestNotification: Bool = false
+    @AppStorage
+    private var repeatPullRequestNotification: Bool
 
     func getGeneralSettings() -> [SettingSwitchViewModel] {
         [
