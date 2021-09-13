@@ -35,6 +35,7 @@
 		099D0B7B26E78B7400960001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B7A26E78B7400960001 /* Constants.swift */; };
 		099D0B7D26E78DB200960001 /* GithubAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D0B7C26E78DB200960001 /* GithubAPIError.swift */; };
 		099D0B8026E85ACA00960001 /* NimbleExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 099D0B7F26E85ACA00960001 /* NimbleExtension */; };
+		09D7774F26EF38E700417BD1 /* NetworkPoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7774E26EF38E700417BD1 /* NetworkPoll.swift */; };
 		8458AF7B26E8731F009F1B9B /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AF7A26E8731F009F1B9B /* LoginScreen.swift */; };
 		84C9E91526E9D18F00B56DD4 /* TextLabelWithHyperLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E91426E9D18F00B56DD4 /* TextLabelWithHyperLink.swift */; };
 		84C9E91926E9F12900B56DD4 /* NSMutableAttributedString+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E91826E9F12900B56DD4 /* NSMutableAttributedString+Range.swift */; };
@@ -99,6 +100,7 @@
 		099D0B4C26E78A2B00960001 /* DecoderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderFactory.swift; sourceTree = "<group>"; };
 		099D0B7A26E78B7400960001 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		099D0B7C26E78DB200960001 /* GithubAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIError.swift; sourceTree = "<group>"; };
+		09D7774E26EF38E700417BD1 /* NetworkPoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPoll.swift; sourceTree = "<group>"; };
 		8458AF7A26E8731F009F1B9B /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		84C9E91426E9D18F00B56DD4 /* TextLabelWithHyperLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelWithHyperLink.swift; sourceTree = "<group>"; };
 		84C9E91826E9F12900B56DD4 /* NSMutableAttributedString+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Range.swift"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		099D0B3626E789FE00960001 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				09D7774D26EF35EB00417BD1 /* NetworkPoll */,
 				0902828226EB360D0010F02E /* Keychain */,
 				099D0B3726E78A2B00960001 /* Network */,
 			);
@@ -399,6 +402,14 @@
 				099D0B7A26E78B7400960001 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		09D7774D26EF35EB00417BD1 /* NetworkPoll */ = {
+			isa = PBXGroup;
+			children = (
+				09D7774E26EF38E700417BD1 /* NetworkPoll.swift */,
+			);
+			path = NetworkPoll;
 			sourceTree = "<group>";
 		};
 		8458AF7926E87311009F1B9B /* Login */ = {
@@ -652,7 +663,6 @@
 				0902827726EB29270010F02E /* NotificationRequestConfiguration.swift in Sources */,
 				099D0B7B26E78B7400960001 /* Constants.swift in Sources */,
 				84C9E91526E9D18F00B56DD4 /* TextLabelWithHyperLink.swift in Sources */,
-				099D0B6226E78A2B00960001 /* EndpointType.swift in Sources */,
 				900125B626EA18AD00C2643C /* SearchRepoScreen.swift in Sources */,
 				0902828426EB361F0010F02E /* Keychain.swift in Sources */,
 				099D0B6126E78A2B00960001 /* GithubAPI.swift in Sources */,
@@ -664,6 +674,7 @@
 				099D0AFB26E783EC00960001 /* ContentView.swift in Sources */,
 				84C9E91926E9F12900B56DD4 /* NSMutableAttributedString+Range.swift in Sources */,
 				099D0B7D26E78DB200960001 /* GithubAPIError.swift in Sources */,
+				09D7774F26EF38E700417BD1 /* NetworkPoll.swift in Sources */,
 				900125B826EB198800C2643C /* SearchBar.swift in Sources */,
 				9001259326E9FB8900C2643C /* View+Border.swift in Sources */,
 				0902828126EB35350010F02E /* AuthenticatedInterceptor.swift in Sources */,
@@ -880,7 +891,7 @@
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = co.nimblehq.GithubNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Manual DeveloperID co.nimblehq.GithubNotifications";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
