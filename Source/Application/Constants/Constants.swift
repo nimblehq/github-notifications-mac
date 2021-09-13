@@ -12,7 +12,7 @@ enum Constants {
 
     enum Network {
 
-        static let baseURLPath = "https://api.github.com/notifications"
+        static let baseURLPath = "https://api.github.com"
     }
 
     enum Color { }

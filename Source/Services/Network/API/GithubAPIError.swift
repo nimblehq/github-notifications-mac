@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum NimbleAPIError: Error {
+enum GithubAPIError: Error {
 
     case genericError
 }
