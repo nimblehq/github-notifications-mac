@@ -14,8 +14,7 @@ platform :mac do
       type:'developer_id',
       username: ENV['FASTLANE_USERNAME'],
       team_id: ENV['TEAM_ID'],
-      app_identifier: "",
-      profile_name: ENV['PROFILE_NAME']
+      app_identifier: "co.nimblehq.GithubNotifications"
     )
   end
 
