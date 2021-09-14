@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import Combine
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var networkPoll: NetworkPoll?
+    var pollNotificationSubscription: AnyCancellable?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        NetworkServiceFactory.shared.setUp(baseURL: Constants.Network.baseURLPath)
+
+        setUpNetworkPoll()
         return true
     }
 
@@ -34,3 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate {
+
+    func setUpNetworkPoll() {
+        networkPoll = NetworkPoll(notificationService: NetworkServiceFactory.shared.createNotificationSercice())
+        pollNotificationSubscription = networkPoll?.pollNotification(60)
+            .sink(receiveValue: { models in
+                #warning("Show notification for received models")
+            })
+    }
+}

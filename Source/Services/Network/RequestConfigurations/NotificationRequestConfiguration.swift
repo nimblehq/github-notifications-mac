@@ -10,7 +10,7 @@ import Alamofire
 
 enum NotificationRequestConfiguration {
 
-    case notifications(lastUpdateDate: String?)
+    case notifications
 }
 
 extension NotificationRequestConfiguration: RequestConfiguration {

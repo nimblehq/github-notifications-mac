@@ -18,4 +18,8 @@ final class NetworkServiceFactory {
         let api = GithubAPI(baseURL: baseURL, parser: DecoderFactory.defaultJsonDecoder())
         self.api = api
     }
+
+    func createNotificationSercice() -> NotificationsServiceProtocol {
+        return NotificationsService(networkAPI: api)
+    }
 }

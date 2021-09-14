@@ -11,7 +11,7 @@ import Combine
 // sourcery: AutoMockable
 protocol NotificationsServiceProtocol {
 
-    func getNotifications(lastUpdateDate: String?) -> AnyPublisher<[APINotification], Error>
+    func getNotifications() -> AnyPublisher<[APINotification], Error>
 }
 
 final class NotificationsService: NotificationsServiceProtocol {
@@ -22,9 +22,9 @@ final class NotificationsService: NotificationsServiceProtocol {
         self.networkAPI = networkAPI
     }
 
-    func getNotifications(lastUpdateDate: String?) -> AnyPublisher<[APINotification], Error> {
+    func getNotifications() -> AnyPublisher<[APINotification], Error> {
         networkAPI.performRequest(
-            with: NotificationRequestConfiguration.notifications(lastUpdateDate: lastUpdateDate)
+            with: NotificationRequestConfiguration.notifications
         )
     }
 }
