@@ -9,30 +9,44 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @State private var isLoggedIn: Bool = UserSessionStorage.shared.isLoggedIn
+
     var body: some View {
         NavigationView {
-            makeSideBarView()
+            if isLoggedIn {
+                makePreferenceSideBarView()
+                RepositoryScreen() // set default screen
+            } else {
+                makeLoginSideBarView()
+                LoginScreen(isLoggedIn: $isLoggedIn) // set default screen
+            }
         }
     }
 
-    private func makeSideBarView() -> some View {
+    private func makePreferenceSideBarView() -> some View {
         List() {
-            NavigationLink(
-                destination: LoginScreen(),
-                label: { Text(TabType.accessToken.title).font(.title2) }
-            )
-            .padding(.top, 50.0)
-            .listRowBackground(Color(UIColor.systemGroupedBackground))
-
             NavigationLink(
                 destination: RepositoryScreen(),
                 label: { Text(TabType.repositories.title).font(.title2) }
             )
-            .padding(.top, 20.0)
+            .padding(.top, 50.0)
             .listRowBackground(Color(UIColor.systemGroupedBackground))
         }
         .listStyle(SidebarListStyle())
         .navigationTitle("Preferences")
+    }
+
+    private func makeLoginSideBarView() -> some View {
+        List() {
+            NavigationLink(
+                destination: LoginScreen(isLoggedIn: $isLoggedIn),
+                label: { Text(TabType.accessToken.title).font(.title2) }
+            )
+            .padding(.top, 50.0)
+            .listRowBackground(Color(UIColor.systemGroupedBackground))
+        }
+        .listStyle(SidebarListStyle())
+        .navigationTitle("Login")
     }
 }
 

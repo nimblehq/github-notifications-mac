@@ -45,6 +45,11 @@
 		84C9E91926E9F12900B56DD4 /* NSMutableAttributedString+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E91826E9F12900B56DD4 /* NSMutableAttributedString+Range.swift */; };
 		09D7774926EB674200417BD1 /* AppStorage+Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7774826EB674100417BD1 /* AppStorage+Key.swift */; };
 		09D7774B26EB6B4900417BD1 /* SettingSwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7774A26EB6B4900417BD1 /* SettingSwitchViewModel.swift */; };
+		84C9E92126EB68E800B56DD4 /* UserRequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E92026EB68E800B56DD4 /* UserRequestConfiguration.swift */; };
+		84C9E92326EB699700B56DD4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E92226EB699700B56DD4 /* UserService.swift */; };
+		84C9E92526EB6C1500B56DD4 /* APIUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E92426EB6C1500B56DD4 /* APIUser.swift */; };
+		84F4241526EF257C00ED6EB8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4241426EF257C00ED6EB8 /* LoginViewModel.swift */; };
+		84F4241726EF2D9000ED6EB8 /* UserSessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4241626EF2D9000ED6EB8 /* UserSessionStorage.swift */; };
 		9001258626E9E9B500C2643C /* RepositoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001258526E9E9B500C2643C /* RepositoryScreen.swift */; };
 		9001258F26E9F26000C2643C /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001258E26E9F26000C2643C /* Color+Hex.swift */; };
 		9001259326E9FB8900C2643C /* View+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001259226E9FB8900C2643C /* View+Border.swift */; };
@@ -116,6 +121,11 @@
 		84C9E91826E9F12900B56DD4 /* NSMutableAttributedString+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Range.swift"; sourceTree = "<group>"; };
 		09D7774826EB674100417BD1 /* AppStorage+Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+Key.swift"; sourceTree = "<group>"; };
 		09D7774A26EB6B4900417BD1 /* SettingSwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchViewModel.swift; sourceTree = "<group>"; };
+		84C9E92026EB68E800B56DD4 /* UserRequestConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserRequestConfiguration.swift; path = Source/Extensions/UserRequestConfiguration.swift; sourceTree = SOURCE_ROOT; };
+		84C9E92226EB699700B56DD4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Source/Extensions/UserService.swift; sourceTree = SOURCE_ROOT; };
+		84C9E92426EB6C1500B56DD4 /* APIUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIUser.swift; path = Source/Models/APIModels/APIUser.swift; sourceTree = SOURCE_ROOT; };
+		84F4241426EF257C00ED6EB8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		84F4241626EF2D9000ED6EB8 /* UserSessionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionStorage.swift; sourceTree = "<group>"; };
 		9001258526E9E9B500C2643C /* RepositoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryScreen.swift; sourceTree = "<group>"; };
 		9001258E26E9F26000C2643C /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		9001259226E9FB8900C2643C /* View+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Border.swift"; sourceTree = "<group>"; };
@@ -155,35 +165,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0902826E26EB24240010F02E /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				0902827226EB26090010F02E /* AppModels */,
-				0902826F26EB24320010F02E /* APIModels */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		0902826F26EB24320010F02E /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
+				84C9E92426EB6C1500B56DD4 /* APIUser.swift */,
 				0902827026EB25460010F02E /* APINotification.swift */,
 				0902827326EB265B0010F02E /* NotificationReason.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
 		};
-		0902827226EB26090010F02E /* AppModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AppModels;
-			sourceTree = "<group>";
-		};
 		0902827526EB29070010F02E /* RequestConfigurations */ = {
 			isa = PBXGroup;
 			children = (
 				0902827626EB29270010F02E /* NotificationRequestConfiguration.swift */,
+				84C9E92026EB68E800B56DD4 /* UserRequestConfiguration.swift */,
 			);
 			path = RequestConfigurations;
 			sourceTree = "<group>";
@@ -286,7 +282,6 @@
 				9001258C26E9F24600C2643C /* Extensions */,
 				900125D126EB607600C2643C /* Models */,
 				099D0B3126E787C400960001 /* Module */,
-				0902826E26EB24240010F02E /* Models */,
 				099D0B3626E789FE00960001 /* Services */,
 				9001258726E9EFD300C2643C /* Views */,
 			);
@@ -393,6 +388,7 @@
 			children = (
 				099D0B4026E78A2B00960001 /* GithubAPI.swift */,
 				099D0B7C26E78DB200960001 /* GithubAPIError.swift */,
+				84F4241626EF2D9000ED6EB8 /* UserSessionStorage.swift */,
 				099D0B4326E78A2B00960001 /* Base */,
 			);
 			path = API;
@@ -423,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				0902826C26EB232C0010F02E /* NotificationsService.swift */,
+				84C9E92226EB699700B56DD4 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -457,6 +454,7 @@
 			children = (
 				84C9E91326E9D17000B56DD4 /* Views */,
 				8458AF7A26E8731F009F1B9B /* LoginScreen.swift */,
+				84F4241426EF257C00ED6EB8 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -535,6 +533,7 @@
 		900125D126EB607600C2643C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0902826F26EB24320010F02E /* APIModels */,
 				900125D226EB607600C2643C /* Repository */,
 			);
 			path = Models;
@@ -690,6 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				900125CF26EB605500C2643C /* RepositoryCell.swift in Sources */,
+				84F4241726EF2D9000ED6EB8 /* UserSessionStorage.swift in Sources */,
 				9001258F26E9F26000C2643C /* Color+Hex.swift in Sources */,
 				099D0B6726E78A2B00960001 /* Request.swift in Sources */,
 				900125D426EB607600C2643C /* Repository.swift in Sources */,
@@ -697,8 +697,11 @@
 				099D0B6526E78A2B00960001 /* Network+Typealias.swift in Sources */,
 				900125B226EA058300C2643C /* RoundedButtonStyle.swift in Sources */,
 				900125CE26EB605500C2643C /* RepositoryCellViewModel.swift in Sources */,
+				84F4241526EF257C00ED6EB8 /* LoginViewModel.swift in Sources */,
 				099D0AF726E783EC00960001 /* AppDelegate.swift in Sources */,
+				84C9E92326EB699700B56DD4 /* UserService.swift in Sources */,
 				099D0B6B26E78A2B00960001 /* DecoderFactory.swift in Sources */,
+				84C9E92126EB68E800B56DD4 /* UserRequestConfiguration.swift in Sources */,
 				099D0B6626E78A2B00960001 /* BaseModels.swift in Sources */,
 				8458AF7B26E8731F009F1B9B /* LoginScreen.swift in Sources */,
 				099D0AF926E783EC00960001 /* SceneDelegate.swift in Sources */,
@@ -710,6 +713,7 @@
 				0902829326EB64D20010F02E /* GeneralScreenViewModel.swift in Sources */,
 				099D0B6126E78A2B00960001 /* GithubAPI.swift in Sources */,
 				099D0B6926E78A2B00960001 /* RequestConfiguration.swift in Sources */,
+				84C9E92526EB6C1500B56DD4 /* APIUser.swift in Sources */,
 				099D0B6A26E78A2B00960001 /* NetworkServiceFactory.swift in Sources */,
 				099D0B6826E78A2B00960001 /* API.swift in Sources */,
 				0902826D26EB232C0010F02E /* NotificationsService.swift in Sources */,
