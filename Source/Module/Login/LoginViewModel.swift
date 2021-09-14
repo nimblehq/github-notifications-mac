@@ -18,21 +18,23 @@ protocol LoginViewModelProtocol {
 final class LoginViewModel: ObservableObject, LoginViewModelProtocol {
 
     private var userService: UserServiceProtocol
+    private var userSession: UserSessionStorageProtocol
 
     var userSubscription: AnyCancellable?
 
-    init(userService: UserServiceProtocol) {
+    init(userService: UserServiceProtocol, userSession: UserSessionStorageProtocol) {
         self.userService = userService
+        self.userSession = userSession
     }
     
     func getUser(token: String, completion: @escaping CompletionHandler) {
-        UserSessionStorage.shared.authToken = token
+        userSession.authToken = token
         userSubscription = userService.getUser()
             .sink(
                 receiveCompletion: { completion in
-                    print(completion)
-                }, receiveValue: { user in
-                    UserSessionStorage.shared.username = user.login
+                    #warning("Show error when failed to get user")
+                }, receiveValue: { [weak self] user in
+                    self?.userSession.username = user.login
                     completion()
                 }
             )
