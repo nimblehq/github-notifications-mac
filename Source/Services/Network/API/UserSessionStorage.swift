@@ -19,8 +19,6 @@ protocol UserSessionStorageProtocol: AnyObject {
 
 final class UserSessionStorage: UserSessionStorageProtocol {
 
-    static let shared: UserSessionStorageProtocol = UserSessionStorage()
-
     private let keychain: KeychainProtocol
 
     private lazy var storedAuthToken: String? = {

@@ -22,7 +22,10 @@ struct LoginScreen: View {
     
     @State private var token: String = ""
     @Binding var isLoggedIn: Bool
-    @ObservedObject var viewModel = LoginViewModel(userService: NetworkServiceFactory.shared.createUserService())
+    @ObservedObject var viewModel = LoginViewModel(
+        userService: NetworkServiceFactory.shared.createUserService(),
+        userSession: UserSessionStorage()
+    )
     
     init(isLoggedIn: Binding<Bool>) {
         self._isLoggedIn = isLoggedIn

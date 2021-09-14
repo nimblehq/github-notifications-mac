@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var isLoggedIn: Bool = UserSessionStorage.shared.isLoggedIn
+    @State private var isLoggedIn: Bool = false
+    @ObservedObject var viewModel = ContentViewModel(userSession: UserSessionStorage())
+
+    init() {
+        _isLoggedIn = State(initialValue: viewModel.getIsLoggedIn())
+    }
 
     var body: some View {
         NavigationView {
