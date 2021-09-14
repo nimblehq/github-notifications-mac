@@ -13,4 +13,8 @@ extension KeychainKey {
     static var authToken: Keychain.Key<String> {
         Keychain.Key(key: "authToken")
     }
+
+    static var username: Keychain.Key<String> {
+        Keychain.Key(key: "username")
+    }
 }

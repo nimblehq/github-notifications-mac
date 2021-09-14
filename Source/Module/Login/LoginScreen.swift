@@ -21,8 +21,11 @@ struct LoginScreen: View {
     ]
     
     @State private var token: String = ""
+    @Binding var isLoggedIn: Bool
+    @ObservedObject var viewModel = LoginViewModel(userService: NetworkServiceFactory.shared.createUserService())
     
-    init() {
+    init(isLoggedIn: Binding<Bool>) {
+        self._isLoggedIn = isLoggedIn
         UITableViewCell.appearance().selectionStyle = .none
     }
     
@@ -37,7 +40,7 @@ struct LoginScreen: View {
                 .bold()
                 .padding(.top, 50.0)
             
-            TextField("The 40 characters token generated on Github", text: $token)
+            SecureField("The 40 characters token generated on Github", text: $token)
                 .disableAutocorrection(true)
                 .padding(10.0)
                 .overlay(
@@ -51,7 +54,7 @@ struct LoginScreen: View {
             HStack {
                 Spacer()
                 Button(
-                    action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/,
+                    action: { didTapLoginButton() },
                     label: {
                         Text("Login")
                             .font(.body)
@@ -73,11 +76,17 @@ struct LoginScreen: View {
         .padding(.horizontal, 25.0)
         .navigationTitle("Login with an access token")
     }
+
+    private func didTapLoginButton() {
+        viewModel.getUser(token: token) {
+            isLoggedIn.toggle()
+        }
+    }
 }
 
 struct LoginScreen_Previews: PreviewProvider {
-    
+
     static var previews: some View {
-        LoginScreen()
+        LoginScreen(isLoggedIn: .constant(false))
     }
 }
