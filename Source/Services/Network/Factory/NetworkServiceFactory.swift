@@ -22,4 +22,8 @@ final class NetworkServiceFactory {
     func createNotificationService() -> NotificationsServiceProtocol {
         return NotificationsService(networkAPI: api)
     }
+
+    func createUserService() -> UserServiceProtocol {
+        return UserService(networkAPI: api)
+    }
 }
