@@ -14,7 +14,6 @@ extension AppStorage {
         case notificationHasSound
         case repeatPullRequestNotification
 
-
         func callAsFunction() -> String {
             self.rawValue
         }

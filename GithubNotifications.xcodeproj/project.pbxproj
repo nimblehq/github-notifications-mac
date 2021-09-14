@@ -708,7 +708,6 @@
 				900125B626EA18AD00C2643C /* SearchRepoScreen.swift in Sources */,
 				0902828426EB361F0010F02E /* Keychain.swift in Sources */,
 				0902829326EB64D20010F02E /* GeneralScreenViewModel.swift in Sources */,
-				0902829326EB64D20010F02E /* GeneralScreenObservable.swift in Sources */,
 				099D0B6126E78A2B00960001 /* GithubAPI.swift in Sources */,
 				099D0B6926E78A2B00960001 /* RequestConfiguration.swift in Sources */,
 				099D0B6A26E78A2B00960001 /* NetworkServiceFactory.swift in Sources */,
