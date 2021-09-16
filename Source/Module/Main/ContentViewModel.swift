@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol ContenViewModelProtocol {
+protocol ContentViewModelProtocol {
 
     func getIsLoggedIn() -> Bool
 }
 
-final class ContentViewModel: ObservableObject, ContenViewModelProtocol {
+final class ContentViewModel: ObservableObject, ContentViewModelProtocol {
 
     private var userSession: UserSessionStorageProtocol
 
