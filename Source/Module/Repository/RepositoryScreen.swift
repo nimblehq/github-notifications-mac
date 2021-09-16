@@ -25,7 +25,7 @@ struct RepositoryScreen: View {
             ScrollView(.vertical) {
                 LazyVStack(alignment: .leading) {
                     ForEach(Array(RepositoryCellViewModel.dummy.enumerated()), id: \.offset) { index, item in
-                        RepositoryCell(viewModel: item)
+                        RepositoryCell(viewModel: item, isNotifying: true)
                             .background(
                                 index % 2 == 0 ? Color.white : Color.gray.opacity(0.1)
                             )

@@ -19,6 +19,8 @@ struct SearchRepoScreen: View {
     }
     @State private var isShowing = true
 
+    @ObservedObject var notifiedReposObservable = NotifiedRepositoryObservable()
+
     var body: some View {
         VStack(alignment: .leading) {
             SearchBar(text: $searchText, placeholder: "Search repositories to notify")
@@ -29,7 +31,7 @@ struct SearchRepoScreen: View {
             ScrollView(.vertical) {
                 LazyVStack(alignment: .leading) {
                     ForEach(Array(RepositoryCellViewModel.dummy.enumerated()), id: \.offset) { index, item in
-                        RepositoryCell(viewModel: item)
+                        RepositoryCell(viewModel: item, isNotifying: notifiedReposObservable.getIsNotifying(item))
                             .background(
                                 index % 2 == 0 ? Color.white : Color.gray.opacity(0.1)
                             )

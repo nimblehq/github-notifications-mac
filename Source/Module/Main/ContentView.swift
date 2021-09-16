@@ -14,13 +14,14 @@ struct ContentView: View {
 
     init() {
         _isLoggedIn = State(initialValue: viewModel.getIsLoggedIn())
+        UITableViewCell.appearance().selectionStyle = .none
     }
 
     var body: some View {
         NavigationView {
             if isLoggedIn {
                 makePreferenceSideBarView()
-                RepositoryScreen() // set default screen
+                GeneralScreen() // set default screen
             } else {
                 makeLoginSideBarView()
                 LoginScreen(isLoggedIn: $isLoggedIn) // set default screen
@@ -31,10 +32,17 @@ struct ContentView: View {
     private func makePreferenceSideBarView() -> some View {
         List() {
             NavigationLink(
-                destination: RepositoryScreen(),
-                label: { Text(TabType.repositories.title).font(.title2) }
+                destination: GeneralScreen(),
+                label: { Text(PreferenceTabType.general.title).font(.title2) }
             )
             .padding(.top, 50.0)
+            .listRowBackground(Color(UIColor.systemGroupedBackground))
+
+            NavigationLink(
+                destination: RepositoryScreen(),
+                label: { Text(PreferenceTabType.repositories.title).font(.title2) }
+            )
+            .padding(.top, 20.0)
             .listRowBackground(Color(UIColor.systemGroupedBackground))
         }
         .listStyle(SidebarListStyle())
@@ -45,7 +53,7 @@ struct ContentView: View {
         List() {
             NavigationLink(
                 destination: LoginScreen(isLoggedIn: $isLoggedIn),
-                label: { Text(TabType.accessToken.title).font(.title2) }
+                label: { Text(LoginTabType.accessToken.title).font(.title2) }
             )
             .padding(.top, 50.0)
             .listRowBackground(Color(UIColor.systemGroupedBackground))
@@ -57,14 +65,25 @@ struct ContentView: View {
 
 extension ContentView {
 
-    enum TabType: Int, CaseIterable {
+    enum LoginTabType: Int, CaseIterable {
 
         case accessToken
-        case repositories
 
         var title: String {
             switch self {
             case .accessToken: return "Access Token"
+            }
+        }
+    }
+
+    enum PreferenceTabType: Int, CaseIterable {
+
+        case general
+        case repositories
+
+        var title: String {
+            switch self {
+            case .general: return "General"
             case .repositories: return "Repositories"
             }
         }
