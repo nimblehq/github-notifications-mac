@@ -13,12 +13,7 @@ struct GeneralScreen: View {
     @ObservedObject var generalScreenObservable = GeneralScreenObservable()
 
     var body: some View {
-        NavigationView {
-            NavigationView { }
-
-            makeSettingListView()
-                .padding()
-        }
+        makeSettingListView()
     }
 
     private func makeSettingListView() -> some View {

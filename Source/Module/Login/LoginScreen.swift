@@ -29,7 +29,6 @@ struct LoginScreen: View {
     
     init(isLoggedIn: Binding<Bool>) {
         self._isLoggedIn = isLoggedIn
-        UITableViewCell.appearance().selectionStyle = .none
     }
     
     var body: some View {

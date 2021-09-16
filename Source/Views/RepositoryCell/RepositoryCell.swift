@@ -11,7 +11,9 @@ import SwiftUI
 struct RepositoryCell: View {
 
     @State var viewModel: RepositoryCellViewModel
-    @State var isNotifying: Bool = true
+    @State var isNotifying: Bool
+
+    @ObservedObject var notifiedReposObservable = NotifiedRepositoryObservable()
 
     var body: some View {
         HStack() {
@@ -26,7 +28,7 @@ struct RepositoryCell: View {
             Spacer()
 
             Button {
-                isNotifying.toggle()
+                didTapNotifyButton()
             } label: {
                 Text(isNotifying ? "Notifying" : "Notify")
                     .frame(maxWidth: 60.0, maxHeight: 5.0)
@@ -41,5 +43,14 @@ struct RepositoryCell: View {
             .clipShape(Capsule())
             .padding(.trailing, 8.0)
         }
+    }
+
+    private func didTapNotifyButton() {
+        if isNotifying {
+            notifiedReposObservable.removeRepository(viewModel)
+        } else {
+            notifiedReposObservable.addRepository(viewModel)
+        }
+        isNotifying.toggle()
     }
 }
