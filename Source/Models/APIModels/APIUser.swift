@@ -12,6 +12,6 @@ struct APIUser: Decodable {
 
     let login: String
     let htmlUrl: String
-    let name: String
-    let email: String
+    let name: String?
+    let email: String?
 }
