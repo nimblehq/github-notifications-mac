@@ -40,7 +40,11 @@ struct RepositoryScreen: View {
                 Spacer()
                 makeAddButton()
                     .background(NavigationLink(
-                        destination: SearchRepoScreen(showSearchScreen: $showSearchScreen),
+                        destination: SearchRepoScreen(
+                            viewModel: SearchRepoViewModel(
+                                repositoryService: NetworkServiceFactory.shared.createRepositoryService()
+                            ),
+                            showSearchScreen: $showSearchScreen),
                         isActive: $showSearchScreen,
                         label: { EmptyView() }
                     ))

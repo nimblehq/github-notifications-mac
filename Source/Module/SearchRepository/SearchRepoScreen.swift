@@ -10,31 +10,23 @@ import SwiftUI
 
 struct SearchRepoScreen: View {
 
+    @ObservedObject var viewModel: SearchRepoViewModel
     @Binding var showSearchScreen: Bool
-
-    @State private var searchText = "" {
-        didSet {
-            print(searchText)
-        }
-    }
-    @State private var isShowing = true
-
     @ObservedObject var notifiedReposObservable = NotifiedRepositoryObservable()
+
+    @State private var isShowing = true
 
     var body: some View {
         VStack(alignment: .leading) {
-            SearchBar(text: $searchText, placeholder: "Search repositories to notify")
+            SearchBar(text: $viewModel.searchText, placeholder: "Search repositories to notify")
                 .border(.darkBorder, width: 1.0, radius: 8.0)
                 .frame(maxWidth: .infinity)
                 .paddingLeft8()
 
             ScrollView(.vertical) {
                 LazyVStack(alignment: .leading) {
-                    ForEach(Array(RepositoryCellViewModel.dummy.enumerated()), id: \.offset) { index, item in
+                    ForEach(viewModel.filteredItems) { item in
                         RepositoryCell(viewModel: item, isNotifying: notifiedReposObservable.getIsNotifying(item))
-                            .background(
-                                index % 2 == 0 ? Color.white : Color.gray.opacity(0.1)
-                            )
                     }
                 }
                 .cornerRadius(8.0)
@@ -51,6 +43,9 @@ struct SearchRepoScreen: View {
         .padding()
         .navigationTitle("Repositories")
         .foregroundColor(.almostBlack)
+        .onAppear {
+            viewModel.getRepositories()
+        }
     }
 }
 
