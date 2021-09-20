@@ -28,10 +28,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = UIHostingController(
                 rootView: contentView.environment(\.colorScheme, .light)
             )
+            #if os(OSX)
             if let titlebar = window.windowScene?.titlebar {
                 titlebar.titleVisibility = .hidden
                 titlebar.toolbar = nil
             }
+            #endif
             self.window = window
             window.makeKeyAndVisible()
         }
