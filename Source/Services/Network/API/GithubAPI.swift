@@ -45,13 +45,15 @@ final class GithubAPI: API {
                 headers: configuration.headers,
                 interceptor: configuration.interceptor
             )
-            .responseDecodable(decoder: self.parser, completionHandler: { (response: DataResponse<T, AFError>) in
-                switch response.result {
+            .responseDecodable(
+                decoder: self.parser,
+                completionHandler: { (response: DataResponse<T, AFError>) in
+                    switch response.result {
                     case .success(let value):
                         promise(.success(value))
                     case .failure(let error):
                         promise(.failure(error))
-                }
+                    }
             })
         }
         .eraseToAnyPublisher()
