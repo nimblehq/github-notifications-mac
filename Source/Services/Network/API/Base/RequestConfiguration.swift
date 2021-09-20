@@ -34,15 +34,11 @@ extension RequestConfiguration {
         return url?.absoluteString ?? "\(baseURL)\(endpoint)"
     }
 
-    var parameters: Parameters? {
-        nil
-    }
+    var parameters: Parameters? { nil }
 
-    var headers: HTTPHeaders? {
-        nil
-    }
+    var headers: HTTPHeaders? { nil }
 
-    var interceptor: RequestInterceptor? {
-        nil
-    }
+    var interceptor: RequestInterceptor? { nil }
+
+    var encoding: ParameterEncoding { JSONEncoding.default }
 }
