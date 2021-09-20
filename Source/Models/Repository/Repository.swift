@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct Repository {
+struct Repository: Decodable {
+
+    enum CodingKeys: String, CodingKey {
+        case name = "full_name"
+    }
 
     let name: String
 }
