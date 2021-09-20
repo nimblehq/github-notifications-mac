@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = UIHostingController(
                 rootView: contentView.environment(\.colorScheme, .light)
             )
-            #if os(OSX)
+            #if os(OSX) || targetEnvironment(macCatalyst)
             if let titlebar = window.windowScene?.titlebar {
                 titlebar.titleVisibility = .hidden
                 titlebar.toolbar = nil
