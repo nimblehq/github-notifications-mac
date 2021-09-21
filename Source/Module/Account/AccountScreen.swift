@@ -20,7 +20,7 @@ struct AccountScreen: View {
                     .font(.body.bold())
                 Spacer()
                 Button {} label: {
-                    Text("Sign Out" )
+                    Text("Sign Out")
                         .frame(maxWidth: 160.0)
                 }
                 .buttonStyle(
