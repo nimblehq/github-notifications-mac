@@ -25,7 +25,10 @@ struct SearchRepoScreen: View {
 
             ScrollView(.vertical) {
                 LazyVStack(alignment: .leading) {
-                    ForEach(Array(zip(viewModel.filteredItems.indices, viewModel.filteredItems)), id: \.0) { index, item in
+                    ForEach(
+                        Array(zip(viewModel.filteredItems.indices, viewModel.filteredItems)),
+                        id: \.1.id
+                    ) { index, item in
                         RepositoryCell(viewModel: item, isNotifying: notifiedReposObservable.getIsNotifying(item))
                             .background(
                                 index % 2 == 0 ? Color.white : Color.gray.opacity(0.1)
