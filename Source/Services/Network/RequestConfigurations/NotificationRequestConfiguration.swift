@@ -44,7 +44,7 @@ extension NotificationRequestConfiguration: RequestConfiguration {
     }
 
     var headers: HTTPHeaders? {
-        return nil
+        return ["If-None-Match": "-"]
     }
 
     var interceptor: RequestInterceptor? {
