@@ -28,12 +28,12 @@ final class LoginViewModel: ObservableObject, LoginViewModelProtocol {
     }
     
     func getUser(token: String, completion: @escaping CompletionHandler) {
-        userSession.authToken = token
-        userSubscription = userService.getUser()
+        userSubscription = userService.getUser(token: token)
             .sink(
-                receiveCompletion: { completion in
+                receiveCompletion: { _ in
                     #warning("Show error when failed to get user")
                 }, receiveValue: { [weak self] user in
+                    self?.userSession.authToken = token
                     self?.userSession.username = user.login
                     completion()
                 }

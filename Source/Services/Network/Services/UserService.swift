@@ -11,7 +11,7 @@ import Combine
 // sourcery: AutoMockable
 protocol UserServiceProtocol {
 
-    func getUser() -> AnyPublisher<APIUser, Error>
+    func getUser(token: String) -> AnyPublisher<APIUser, Error>
 }
 
 final class UserService: UserServiceProtocol {
@@ -22,9 +22,9 @@ final class UserService: UserServiceProtocol {
         self.networkAPI = networkAPI
     }
 
-    func getUser() -> AnyPublisher<APIUser, Error> {
+    func getUser(token: String) -> AnyPublisher<APIUser, Error> {
         networkAPI.performRequest(
-            with: UserRequestConfiguration.user
+            with: UserRequestConfiguration.user(token: token)
         )
     }
 }

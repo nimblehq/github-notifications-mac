@@ -81,7 +81,7 @@ struct LoginScreen: View {
 
     private func didTapLoginButton() {
         viewModel.getUser(token: token) {
-            isLoggedIn.toggle()
+            isLoggedIn = true
         }
     }
 }
