@@ -37,6 +37,7 @@ class NotifiedRepositoryObservable: ObservableObject, NotifiedRepositoryObservab
     }
 
     func addRepository(_ repo: RepositoryCellViewModel) {
+        if getIsNotifying(repo) { return }
         notifiedRepositories.append(repo.name)
     }
 
@@ -46,5 +47,9 @@ class NotifiedRepositoryObservable: ObservableObject, NotifiedRepositoryObservab
 
     func getIsNotifying(_ repo: RepositoryCellViewModel) -> Bool {
         notifiedRepositories.contains(repo.name)
+    }
+
+    func clear() {
+        notifiedRepositories = []
     }
 }

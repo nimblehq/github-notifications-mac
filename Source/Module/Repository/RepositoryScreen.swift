@@ -7,9 +7,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct RepositoryScreen: View {
 
+    @ObservedObject var viewModel: RepositoryViewModel = RepositoryViewModel()
     @State fileprivate var showSearchScreen: Bool = false
 
     var body: some View {
@@ -24,11 +26,18 @@ struct RepositoryScreen: View {
 
             ScrollView(.vertical) {
                 LazyVStack(alignment: .leading) {
-                    ForEach(Array(RepositoryCellViewModel.dummy.enumerated()), id: \.offset) { index, item in
-                        RepositoryCell(viewModel: item, isNotifying: true)
-                            .background(
-                                index % 2 == 0 ? Color.white : Color.gray.opacity(0.1)
-                            )
+                    ForEach(
+                        Array(zip(viewModel.cellViewModels.indices, viewModel.cellViewModels)),
+                        id: \.1.id
+                    ) { index, item in
+                        RepositoryCell(
+                            viewModel: item,
+                            isNotifying: viewModel.getIsNotifying(for: item),
+                            didChangeNotity: viewModel.updateIfNeeded
+                        )
+                        .background(
+                            index % 2 == 0 ? Color.white : Color.gray.opacity(0.1)
+                        )
                     }
                 }
                 .cornerRadius(8.0)
@@ -54,6 +63,9 @@ struct RepositoryScreen: View {
         .padding()
         .navigationTitle("Repositories")
         .foregroundColor(.almostBlack)
+        .onAppear {
+            viewModel.updateIfNeeded()
+        }
     }
 }
 
