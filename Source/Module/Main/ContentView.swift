@@ -44,6 +44,13 @@ struct ContentView: View {
             )
             .padding(.top, 20.0)
             .listRowBackground(Color(UIColor.systemGroupedBackground))
+
+            NavigationLink(
+                destination: AccountScreen(),
+                label: { Text(PreferenceTabType.account.title).font(.title2) }
+            )
+            .padding(.top, 20.0)
+            .listRowBackground(Color(UIColor.systemGroupedBackground))
         }
         .listStyle(SidebarListStyle())
         .navigationTitle("Preferences")
@@ -80,11 +87,13 @@ extension ContentView {
 
         case general
         case repositories
+        case account
 
         var title: String {
             switch self {
             case .general: return "General"
             case .repositories: return "Repositories"
+            case .account: return "Account"
             }
         }
     }
