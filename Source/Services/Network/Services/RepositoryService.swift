@@ -28,37 +28,8 @@ final class RepositoryService: RepositoryServiceProtocol {
     }
 
     func getRepositories() -> AnyPublisher<[Repository], Error> {
-//        networkAPI.performRequest(
-//            with: RepositoryRequestConfiguration.getRepositories(userSession.username ?? "")
-//        )
-
-        Future { promise in
-            if  let data = Data.jsonData,
-                let result = try? JSONDecoder().decode([Repository].self, from: data) {
-                promise(.success(result))
-            } else {
-                promise(.failure(APIError.generic))
-            }
-        }
-        .eraseToAnyPublisher()
+        networkAPI.performRequest(
+            with: RepositoryRequestConfiguration.getRepositories(userSession.username ?? "")
+        )
     }
-}
-
-// MARK: - Dummy
-
-import Foundation
-
-private extension Data {
-
-    static var jsonData: Data? {
-        guard let path = Bundle.main.path(forResource: "repositories", ofType: "json"),
-              let jsonData = try? String(contentsOfFile: path).data(using: .utf8)
-        else { return nil }
-        return jsonData
-    }
-}
-
-enum APIError: Error {
-
-    case generic
 }
