@@ -10,7 +10,7 @@ import Alamofire
 
 enum UserRequestConfiguration {
 
-    case user
+    case user(token: String)
 }
 
 extension UserRequestConfiguration: RequestConfiguration {
@@ -36,10 +36,11 @@ extension UserRequestConfiguration: RequestConfiguration {
     }
 
     var headers: HTTPHeaders? {
-        return nil
+        switch self {
+        case .user(let token):
+            return ["Authorization": "token \(token)"]
+        }
     }
 
-    var interceptor: RequestInterceptor? {
-        AuthenticatedInterceptor(keychain: Keychain.default)
-    }
+    var interceptor: RequestInterceptor? { nil }
 }
