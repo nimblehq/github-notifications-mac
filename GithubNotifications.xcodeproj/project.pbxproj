@@ -101,7 +101,7 @@
 		0902828D26EB55D50010F02E /* SettingSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchView.swift; sourceTree = "<group>"; };
 		0902829026EB603C0010F02E /* SwitchToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchToggleStyle.swift; sourceTree = "<group>"; };
 		0902829226EB64D20010F02E /* GeneralScreenObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralScreenObservable.swift; sourceTree = "<group>"; };
-		099D0AF326E783EC00960001 /* GithubNotifications.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubNotifications.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		099D0AF326E783EC00960001 /* Github Notifications.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github Notifications.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		099D0AF626E783EC00960001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		099D0AF826E783EC00960001 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		099D0AFA26E783EC00960001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 		099D0AF426E783EC00960001 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				099D0AF326E783EC00960001 /* GithubNotifications.app */,
+				099D0AF326E783EC00960001 /* Github Notifications.app */,
 				099D0B0926E783F200960001 /* GithubNotificationsTests.xctest */,
 				099D0B1426E783F200960001 /* GithubNotificationsUITests.xctest */,
 			);
@@ -607,9 +607,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		099D0AF226E783EC00960001 /* GithubNotifications */ = {
+		099D0AF226E783EC00960001 /* Github Notifications */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 099D0B1D26E783F200960001 /* Build configuration list for PBXNativeTarget "GithubNotifications" */;
+			buildConfigurationList = 099D0B1D26E783F200960001 /* Build configuration list for PBXNativeTarget "Github Notifications" */;
 			buildPhases = (
 				099D0AEF26E783EC00960001 /* Sources */,
 				099D0AF026E783EC00960001 /* Frameworks */,
@@ -619,14 +619,14 @@
 			);
 			dependencies = (
 			);
-			name = GithubNotifications;
+			name = "Github Notifications";
 			packageProductDependencies = (
 				099D0B2B26E7875400960001 /* Alamofire */,
 				099D0B7F26E85ACA00960001 /* NimbleExtension */,
 				0902828826EB47360010F02E /* KeychainSwift */,
 			);
 			productName = GithubNotifications;
-			productReference = 099D0AF326E783EC00960001 /* GithubNotifications.app */;
+			productReference = 099D0AF326E783EC00960001 /* Github Notifications.app */;
 			productType = "com.apple.product-type.application";
 		};
 		099D0B0826E783F200960001 /* GithubNotificationsTests */ = {
@@ -706,7 +706,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				099D0AF226E783EC00960001 /* GithubNotifications */,
+				099D0AF226E783EC00960001 /* Github Notifications */,
 				099D0B0826E783F200960001 /* GithubNotificationsTests */,
 				099D0B1326E783F200960001 /* GithubNotificationsUITests */,
 			);
@@ -824,12 +824,12 @@
 /* Begin PBXTargetDependency section */
 		099D0B0B26E783F200960001 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 099D0AF226E783EC00960001 /* GithubNotifications */;
+			target = 099D0AF226E783EC00960001 /* Github Notifications */;
 			targetProxy = 099D0B0A26E783F200960001 /* PBXContainerItemProxy */;
 		};
 		099D0B1626E783F200960001 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 099D0AF226E783EC00960001 /* GithubNotifications */;
+			target = 099D0AF226E783EC00960001 /* Github Notifications */;
 			targetProxy = 099D0B1526E783F200960001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1115,7 +1115,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		099D0B1D26E783F200960001 /* Build configuration list for PBXNativeTarget "GithubNotifications" */ = {
+		099D0B1D26E783F200960001 /* Build configuration list for PBXNativeTarget "Github Notifications" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				099D0B1E26E783F200960001 /* Debug */,
