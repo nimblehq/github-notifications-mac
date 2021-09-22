@@ -33,7 +33,7 @@ struct RepositoryScreen: View {
                         RepositoryCell(
                             viewModel: item,
                             isNotifying: viewModel.getIsNotifying(for: item),
-                            didChangeNotity: viewModel.updateIfNeeded
+                            didChangeNotify: viewModel.updateIfNeeded
                         )
                         .background(
                             index % 2 == 0 ? Color.white : Color.gray.opacity(0.1)

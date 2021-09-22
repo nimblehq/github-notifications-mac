@@ -12,7 +12,7 @@ struct RepositoryCell: View {
 
     @State var viewModel: RepositoryCellViewModel
     @State var isNotifying: Bool
-    var didChangeNotity: (() -> Void)? = nil
+    var didChangeNotify: (() -> Void)? = nil
 
     @ObservedObject var notifiedReposObservable = NotifiedRepositoryObservable()
 
@@ -52,7 +52,7 @@ struct RepositoryCell: View {
         } else {
             notifiedReposObservable.addRepository(viewModel)
         }
-        if let didChangeNotity = didChangeNotity, isNotifying {
+        if let didChangeNotity = didChangeNotify, isNotifying {
             didChangeNotity()
             // Seems viewModel id is cached and status of button has been kept also
             // So this is trick to make sure at RepositoryScreen, notify button is always notifying status
