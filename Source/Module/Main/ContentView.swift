@@ -16,18 +16,19 @@ struct ContentView: View {
         _isLoggedIn = State(initialValue: viewModel.getIsLoggedIn())
         UITableViewCell.appearance().selectionStyle = .none
     }
-
     var body: some View {
-        NavigationView {
             if isLoggedIn {
-                makePreferenceSideBarView()
-                GeneralScreen() // set default screen
+                NavigationView {
+                    makePreferenceSideBarView()
+                    GeneralScreen() // set default screen
+                }
             } else {
-                makeLoginSideBarView()
-                LoginScreen(isLoggedIn: $isLoggedIn) // set default screen
+                NavigationView {
+                    makeLoginSideBarView()
+                    LoginScreen(isLoggedIn: $isLoggedIn)
+                }
             }
         }
-    }
 
     private func makePreferenceSideBarView() -> some View {
         List() {
@@ -46,7 +47,7 @@ struct ContentView: View {
             .listRowBackground(Color(UIColor.systemGroupedBackground))
 
             NavigationLink(
-                destination: AccountScreen(),
+                destination: AccountScreen(isLoggedIn: $isLoggedIn),
                 label: { Text(PreferenceTabType.account.title).font(.title2) }
             )
             .padding(.top, 20.0)

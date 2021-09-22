@@ -42,6 +42,7 @@
 		09D7774926EB674200417BD1 /* AppStorage+Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7774826EB674100417BD1 /* AppStorage+Key.swift */; };
 		09D7774B26EB6B4900417BD1 /* SettingSwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7774A26EB6B4900417BD1 /* SettingSwitchViewModel.swift */; };
 		09D7774F26EF38E700417BD1 /* NetworkPoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7774E26EF38E700417BD1 /* NetworkPoll.swift */; };
+		2D4ED7E526F9B90000EA94D6 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ED7E426F9B90000EA94D6 /* AccountViewModel.swift */; };
 		2DCC7E3226F98ABA00367CEC /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC7E3126F98ABA00367CEC /* AccountScreen.swift */; };
 		8458AF7B26E8731F009F1B9B /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AF7A26E8731F009F1B9B /* LoginScreen.swift */; };
 		846BCE4026F0808800FD9B39 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BCE3F26F0808800FD9B39 /* ContentViewModel.swift */; };
@@ -125,6 +126,7 @@
 		09D7774826EB674100417BD1 /* AppStorage+Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+Key.swift"; sourceTree = "<group>"; };
 		09D7774A26EB6B4900417BD1 /* SettingSwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchViewModel.swift; sourceTree = "<group>"; };
 		09D7774E26EF38E700417BD1 /* NetworkPoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPoll.swift; sourceTree = "<group>"; };
+		2D4ED7E426F9B90000EA94D6 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		2DCC7E3126F98ABA00367CEC /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		8458AF7A26E8731F009F1B9B /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		846BCE3F26F0808800FD9B39 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				2DCC7E3126F98ABA00367CEC /* AccountScreen.swift */,
+				2D4ED7E426F9B90000EA94D6 /* AccountViewModel.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -770,6 +773,7 @@
 				9001258626E9E9B500C2643C /* RepositoryScreen.swift in Sources */,
 				8486472B26F25E2300E431BD /* Array+RawRepresentable.swift in Sources */,
 				0902827426EB265B0010F02E /* NotificationReason.swift in Sources */,
+				2D4ED7E526F9B90000EA94D6 /* AccountViewModel.swift in Sources */,
 				09D7774B26EB6B4900417BD1 /* SettingSwitchViewModel.swift in Sources */,
 				0902828E26EB55D50010F02E /* SettingSwitchView.swift in Sources */,
 				0902828C26EB54220010F02E /* GeneralScreen.swift in Sources */,
