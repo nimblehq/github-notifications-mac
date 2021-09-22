@@ -30,7 +30,7 @@ final class AccountViewModel: ObservableObject {
 
     func fetch() {
         isFetching = true
-        userService.getUser()
+        userService.getUser(token: userSession.authToken ?? "")
             .sink { [weak self] in
                 guard let self = self else { return }
 
