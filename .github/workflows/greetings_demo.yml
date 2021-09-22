@@ -13,6 +13,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        respondableId: ${{ github.event.issue.node_id }}
+        respondableId: ${{ github.event.comment.node_id }}
         response: "Well Done !! Thank you @${{ github.event.issue.user.login }} for your contribution :)"
-        author: ${{ github.event.issue.user.login }}
+        author: ${{ github.event.comment.user.login }}
