@@ -44,6 +44,7 @@
 		09D7774F26EF38E700417BD1 /* NetworkPoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7774E26EF38E700417BD1 /* NetworkPoll.swift */; };
 		2D4ED7E526F9B90000EA94D6 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ED7E426F9B90000EA94D6 /* AccountViewModel.swift */; };
 		2DCC7E3226F98ABA00367CEC /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC7E3126F98ABA00367CEC /* AccountScreen.swift */; };
+		8450FC4026FAF8DB00DD4C84 /* UNUserNotificationCenter+Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450FC3F26FAF8DB00DD4C84 /* UNUserNotificationCenter+Future.swift */; };
 		8458AF7B26E8731F009F1B9B /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AF7A26E8731F009F1B9B /* LoginScreen.swift */; };
 		846BCE4026F0808800FD9B39 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BCE3F26F0808800FD9B39 /* ContentViewModel.swift */; };
 		8486472B26F25E2300E431BD /* Array+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486472A26F25E2300E431BD /* Array+RawRepresentable.swift */; };
@@ -130,6 +131,7 @@
 		09D7774E26EF38E700417BD1 /* NetworkPoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPoll.swift; sourceTree = "<group>"; };
 		2D4ED7E426F9B90000EA94D6 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		2DCC7E3126F98ABA00367CEC /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
+		8450FC3F26FAF8DB00DD4C84 /* UNUserNotificationCenter+Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNUserNotificationCenter+Future.swift"; sourceTree = "<group>"; };
 		8458AF7A26E8731F009F1B9B /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		846BCE3F26F0808800FD9B39 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		8486472A26F25E2300E431BD /* Array+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RawRepresentable.swift"; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 				09D7774826EB674100417BD1 /* AppStorage+Key.swift */,
 				9001259226E9FB8900C2643C /* View+Border.swift */,
 				8486472A26F25E2300E431BD /* Array+RawRepresentable.swift */,
+				8450FC3F26FAF8DB00DD4C84 /* UNUserNotificationCenter+Future.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 				84C9E92326EB699700B56DD4 /* UserService.swift in Sources */,
 				90DC330E26F86EBC00515E83 /* SearchRepoViewModel.swift in Sources */,
 				099D0B6B26E78A2B00960001 /* DecoderFactory.swift in Sources */,
+				8450FC4026FAF8DB00DD4C84 /* UNUserNotificationCenter+Future.swift in Sources */,
 				84C9E92126EB68E800B56DD4 /* UserRequestConfiguration.swift in Sources */,
 				846BCE4026F0808800FD9B39 /* ContentViewModel.swift in Sources */,
 				099D0B6626E78A2B00960001 /* BaseModels.swift in Sources */,
@@ -979,7 +983,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.nimblehq.GithubNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "2,6";
 			};
@@ -1009,7 +1013,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Manual DeveloperID co.nimblehq.GithubNotifications";
 				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "2,6";
 			};
