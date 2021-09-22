@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 import UserNotifications
 
 final class NotificationManager {
@@ -16,6 +17,8 @@ final class NotificationManager {
 
     @AppStorage
     private var notificationHasSound: Bool
+
+    private var cancellableBag = Set<AnyCancellable>()
 
     init(store: UserDefaults = UserDefaults.standard) {
         _notificationHasSound = AppStorage(
@@ -52,9 +55,25 @@ final class NotificationManager {
     }
 
     func requestNotificationPermission() {
-        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, _) in
-            self.isAuthorized = granted ? true : false
-        }
+        notificationCenter.getNotificationSettings()
+            .flatMap { settings -> AnyPublisher<Bool, Never> in
+                switch settings.authorizationStatus {
+                case .denied:
+                    return Just(false)
+                        .eraseToAnyPublisher()
+                case .notDetermined:
+                    return self.notificationCenter.requestAuthorization(options: [.alert, .sound, .badge])
+                        .replaceError(with: false)
+                        .eraseToAnyPublisher()
+                default:
+                    return Just(true)
+                        .eraseToAnyPublisher()
+                }
+            }
+            .sink(receiveValue: { authorized in
+                self.isAuthorized = authorized
+            })
+            .store(in: &cancellableBag)
     }
 }
 
