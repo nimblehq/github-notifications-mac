@@ -14,10 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var networkPoll: NetworkPoll?
     var pollNotificationSubscription: AnyCancellable?
 
+    private let notificationManager = NotificationManager()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
         NetworkServiceFactory.shared.setUp(baseURL: Constants.Network.baseURLPath)
+
+        notificationManager.requestNotificationPermission()
 
         setUpNetworkPoll()
         return true
