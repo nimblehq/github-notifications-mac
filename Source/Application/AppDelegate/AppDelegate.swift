@@ -49,8 +49,26 @@ extension AppDelegate {
     func setUpNetworkPoll() {
         networkPoll = NetworkPoll(notificationService: NetworkServiceFactory.shared.createNotificationService())
         pollNotificationSubscription = networkPoll?.pollNotification(60)
-            .sink(receiveValue: { models in
-                #warning("Show notification for received models")
+            .sink(receiveValue: { notifications in
+                notifications.forEach {
+                    var isShowNotiBanner: Bool = false
+                    switch $0.reason {
+                    case .assign, .mention, .review_requested:
+                        isShowNotiBanner = true
+                    case .author:
+                        isShowNotiBanner = $0.subject.type == "PullRequest" ? true : false
+                    default:
+                        #warning("Handle for other cases")
+                        isShowNotiBanner = false
+                    }
+                    if isShowNotiBanner {
+                        self.notificationManager.scheduleNotification(
+                            reason: $0.reason,
+                            repoName: $0.repository.fullName,
+                            prTitle: $0.subject.title
+                        )
+                    }
+                }
             })
     }
 }
