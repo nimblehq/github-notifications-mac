@@ -68,7 +68,7 @@ final class NotificationManager: NSObject {
                 "url": url
             ]
             
-            let uuid = "\(repoName)\(prTitle)"
+            let uuid = "\(reason.hashValue)\(repoName)\(prTitle)"
             let request = UNNotificationRequest(identifier: uuid, content: content, trigger: nil)
 
             notificationCenter.add(request)
