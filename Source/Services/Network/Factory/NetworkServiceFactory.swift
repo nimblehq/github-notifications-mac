@@ -28,6 +28,6 @@ final class NetworkServiceFactory {
     }
 
     func createRepositoryService() -> RepositoryServiceProtocol {
-        RepositoryService(networkAPI: api, userSession: UserSessionStorage())
+        RepositoryService(networkAPI: api)
     }
 }
