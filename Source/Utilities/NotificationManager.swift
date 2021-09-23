@@ -13,10 +13,15 @@ import UserNotifications
 final class NotificationManager: NSObject {
 
     private let notificationCenter = UNUserNotificationCenter.current()
+    private let repeatDuration = 60.0 * 10.0
+
     private var isAuthorized: Bool = false
 
     @AppStorage
     private var notificationHasSound: Bool
+
+    @AppStorage
+    private var repeatPullRequestNotification: Bool
 
     private var cancellableBag = Set<AnyCancellable>()
 
@@ -24,6 +29,11 @@ final class NotificationManager: NSObject {
         _notificationHasSound = AppStorage(
             wrappedValue: store.bool(forKey: AppStorage<Any>.Keys.notificationHasSound()),
             AppStorage<Any>.Keys.notificationHasSound(),
+            store: store
+        )
+        _repeatPullRequestNotification = AppStorage(
+            wrappedValue: store.bool(forKey: AppStorage<Any>.Keys.repeatPullRequestNotification()),
+            AppStorage<Any>.Keys.repeatPullRequestNotification(),
             store: store
         )
         super.init()
@@ -58,11 +68,23 @@ final class NotificationManager: NSObject {
                 "url": url
             ]
             
-            let uuidString = UUID().uuidString
-            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: nil)
+            let uuid = "\(repoName)\(prTitle)"
+            let request = UNNotificationRequest(identifier: uuid, content: content, trigger: nil)
 
             notificationCenter.add(request)
+
+            if repeatPullRequestNotification && reason == .review_requested {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                    self.repeatNotification(content: content, uuid: uuid)
+                }
+            }
         }
+    }
+
+    private func repeatNotification(content: UNMutableNotificationContent, uuid: String) {
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: repeatDuration, repeats: true)
+        let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
+        notificationCenter.add(request)
     }
 
     func requestNotificationPermission() {
@@ -93,6 +115,7 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         switch response.actionIdentifier {
         case UNNotificationDefaultActionIdentifier:
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: [response.notification.request.identifier])
             guard let stringURL = response
                     .notification
                     .request
