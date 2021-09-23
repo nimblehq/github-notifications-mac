@@ -48,6 +48,7 @@
 		8458AF7B26E8731F009F1B9B /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AF7A26E8731F009F1B9B /* LoginScreen.swift */; };
 		846BCE4026F0808800FD9B39 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BCE3F26F0808800FD9B39 /* ContentViewModel.swift */; };
 		8486472B26F25E2300E431BD /* Array+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486472A26F25E2300E431BD /* Array+RawRepresentable.swift */; };
+		84A2F09C26FC311900596005 /* NotificationSubjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2F09B26FC311900596005 /* NotificationSubjectType.swift */; };
 		84A983C626F2F4C800D670FD /* NotifiedRepositoryObservableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A983C526F2F4C800D670FD /* NotifiedRepositoryObservableProtocol.swift */; };
 		84C9E91526E9D18F00B56DD4 /* TextLabelWithHyperLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E91426E9D18F00B56DD4 /* TextLabelWithHyperLink.swift */; };
 		84C9E91926E9F12900B56DD4 /* NSMutableAttributedString+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9E91826E9F12900B56DD4 /* NSMutableAttributedString+Range.swift */; };
@@ -135,6 +136,7 @@
 		8458AF7A26E8731F009F1B9B /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		846BCE3F26F0808800FD9B39 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		8486472A26F25E2300E431BD /* Array+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RawRepresentable.swift"; sourceTree = "<group>"; };
+		84A2F09B26FC311900596005 /* NotificationSubjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSubjectType.swift; sourceTree = "<group>"; };
 		84A983C526F2F4C800D670FD /* NotifiedRepositoryObservableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiedRepositoryObservableProtocol.swift; sourceTree = "<group>"; };
 		84C9E91426E9D18F00B56DD4 /* TextLabelWithHyperLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelWithHyperLink.swift; sourceTree = "<group>"; };
 		84C9E91826E9F12900B56DD4 /* NSMutableAttributedString+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Range.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				84C9E92426EB6C1500B56DD4 /* APIUser.swift */,
 				0902827026EB25460010F02E /* APINotification.swift */,
 				0902827326EB265B0010F02E /* NotificationReason.swift */,
+				84A2F09B26FC311900596005 /* NotificationSubjectType.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				09D7774926EB674200417BD1 /* AppStorage+Key.swift in Sources */,
 				099D0B7D26E78DB200960001 /* GithubAPIError.swift in Sources */,
 				09D7774F26EF38E700417BD1 /* NetworkPoll.swift in Sources */,
+				84A2F09C26FC311900596005 /* NotificationSubjectType.swift in Sources */,
 				2DCC7E3226F98ABA00367CEC /* AccountScreen.swift in Sources */,
 				900125B826EB198800C2643C /* SearchBar.swift in Sources */,
 				9001259326E9FB8900C2643C /* View+Border.swift in Sources */,
