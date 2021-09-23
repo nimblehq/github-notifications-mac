@@ -40,7 +40,7 @@ final class AccountViewModel: ObservableObject {
                 }
                 self.isFetching = false
             } receiveValue: { [weak self] in
-                self?.username = $0.name ?? ""
+                self?.username = $0.login
             }
             .store(in: &cancellableBag)
     }
