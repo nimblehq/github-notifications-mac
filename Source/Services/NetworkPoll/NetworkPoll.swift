@@ -53,7 +53,7 @@ class NetworkPoll: NetworkPollProtocol {
 
     private func newerThanLastest(_ notification: APINotification) -> Bool {
         let latestNotificationInterval = self.latestNotificationInterval
-        if notification.updatedAt.timeIntervalSince1970 >= latestNotificationInterval {
+        if notification.updatedAt.timeIntervalSince1970 > latestNotificationInterval {
             self.latestNotificationInterval = notification.updatedAt.timeIntervalSince1970
             return true
         }
