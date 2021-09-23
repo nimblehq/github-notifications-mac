@@ -33,11 +33,11 @@ final class NotificationManager: NSObject {
 
     private func getNotificationType(reason: NotificationReason) -> NotificationType {
         switch reason {
-        case .author:
-            return .reviewed
-        default:
-            #warning("Remove default and `undefined` when handle all cases")
-            return .undefined
+        case .author: return .reviewed
+        case .mention: return .mentioned
+        case .review_requested: return .reviewRequested
+        case .assign: return .assigned
+        default: return .undefined
         }
     }
 
@@ -112,11 +112,19 @@ extension NotificationManager {
     enum NotificationType {
 
         case reviewed
+        case reviewRequested
+        case mentioned
+        case assigned
+        case ciUpdated // Currently, CI updated only support for email and website.
         case undefined
 
         var title: String {
             switch self {
             case .reviewed: return "Reviewed"
+            case .reviewRequested: return "Review requested"
+            case .mentioned: return "Mentioned"
+            case .assigned: return "Assigned"
+            case .ciUpdated: return "CI updated"
             case .undefined: return ""
             }
         }

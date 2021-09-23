@@ -49,6 +49,10 @@ class NotifiedRepositoryObservable: ObservableObject, NotifiedRepositoryObservab
         notifiedRepositories.contains(repo.name)
     }
 
+    func contains(name: String) -> Bool {
+        notifiedRepositories.contains(name)
+    }
+
     func clear() {
         notifiedRepositories = []
     }

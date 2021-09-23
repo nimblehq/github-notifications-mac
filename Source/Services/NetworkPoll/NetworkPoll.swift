@@ -21,6 +21,9 @@ class NetworkPoll: NetworkPollProtocol {
 
     @AppStorage
     private var latestNotificationInterval: TimeInterval
+
+    @Published
+    private var notifiedRepositoryObservable = NotifiedRepositoryObservable()
     
     init(notificationService: NotificationsServiceProtocol, store: UserDefaults = UserDefaults.standard) {
         self.notificationService = notificationService
@@ -40,6 +43,7 @@ class NetworkPoll: NetworkPollProtocol {
             .flatMap { [weak self] publisher in
                 publisher.map {
                     $0
+                        .filter { self?.notifiedRepositoryObservable.contains(name: $0.repository.fullName) ?? false }
                         .sorted { $0.updatedAt < $1.updatedAt }
                         .filter { self?.newerThanLastest($0) ?? true }
                 }
