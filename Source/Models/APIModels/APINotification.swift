@@ -37,6 +37,6 @@ extension APINotification {
 
         let title: String
         let url: String
-        let type: String
+        let type: NotificationSubjectType
     }
 }

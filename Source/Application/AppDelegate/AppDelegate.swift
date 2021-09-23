@@ -56,7 +56,7 @@ extension AppDelegate {
                     case .assign, .mention, .review_requested:
                         isShowNotiBanner = true
                     case .author:
-                        isShowNotiBanner = $0.subject.type == "PullRequest" ? true : false
+                        isShowNotiBanner = $0.subject.type == .pullRequest ? true : false
                     default:
                         #warning("Handle for other cases")
                         isShowNotiBanner = false
