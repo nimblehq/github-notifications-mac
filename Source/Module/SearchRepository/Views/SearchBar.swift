@@ -15,51 +15,50 @@ struct SearchBar: View {
     @State private var isEditing = false
 
     var body: some View {
-        HStack {
+        ZStack {
             TextField(placeholder, text: $text)
                 .disableAutocorrection(true)
                 .padding(.vertical, 8.0)
                 .padding(.leading, 30.0)
                 .padding(.trailing, 25.0)
                 .cornerRadius(8)
-                .overlay(
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
-                            .frame(minWidth: 0.0, maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, 8.0)
-                            .padding(.top, -1.0)
-
-                        if isEditing {
-                            Button(action: {
-                                self.text = ""
-                            }) {
-                                Image(systemName: "multiply.circle.fill")
-                                    .foregroundColor(.gray)
-                                    .padding(.trailing, 8)
-                            }
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                    .padding(.leading, 8.0)
+                    .padding(.top, -1.0)
+                Spacer()
+                if isEditing {
+                    HStack(spacing: 8.0) {
+                        Button(action: {
+                            self.isEditing = false
+                            self.text = ""
+                            UIApplication.shared.sendAction(
+                                #selector(UIResponder.resignFirstResponder),
+                                to: nil, from: nil, for: nil
+                            )
+                        }) {
+                            Text("Cancel")
+                                .foregroundColor(.white)
                         }
-                    })
-                .onTapGesture {
-                    self.isEditing = true
-                }
+                        .padding(.trailing, 8.0)
+                        .transition(.opacity)
+                        .animation(.easeInOut)
 
-            if isEditing {
-                Button(action: {
-                    self.isEditing = false
-                    self.text = ""
-                    UIApplication.shared.sendAction(
-                        #selector(UIResponder.resignFirstResponder),
-                        to: nil, from: nil, for: nil
-                    )
-                }) {
-                    Text("Cancel")
-                        .foregroundColor(.white)
+                        Button(action: {
+                            self.text = ""
+                        }) {
+                            Image(systemName: "multiply.circle.fill")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    .padding(.trailing, 8)
                 }
-                .padding(.trailing, 8.0)
-                .transition(.opacity)
-                .animation(.easeInOut)
             }
         }
+        // comment to fix scrollview freezing when searching
+//        .onTapGesture {
+//            self.isEditing = true
+//        }
     }
 }
