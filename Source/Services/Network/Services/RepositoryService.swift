@@ -17,19 +17,14 @@ protocol RepositoryServiceProtocol {
 final class RepositoryService: RepositoryServiceProtocol {
 
     private let networkAPI: API
-    private let userSession: UserSessionStorageProtocol
 
-    init(
-        networkAPI: API,
-        userSession: UserSessionStorageProtocol
-    ) {
+    init(networkAPI: API) {
         self.networkAPI = networkAPI
-        self.userSession = userSession
     }
 
     func getRepositories() -> AnyPublisher<[Repository], Error> {
         networkAPI.performRequest(
-            with: RepositoryRequestConfiguration.getRepositories(userSession.username ?? "")
+            with: RepositoryRequestConfiguration.getRepositories
         )
     }
 }

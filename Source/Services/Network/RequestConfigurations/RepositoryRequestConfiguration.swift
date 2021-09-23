@@ -6,11 +6,11 @@
 //  Copyright © 2021 Nimblehq. All rights reserved.
 //
 
-import Foundation
+import Alamofire
 
 enum RepositoryRequestConfiguration {
 
-    case getRepositories(String)
+    case getRepositories
 }
 
 extension RepositoryRequestConfiguration: RequestConfiguration {
@@ -19,7 +19,7 @@ extension RepositoryRequestConfiguration: RequestConfiguration {
 
     var endpoint: String {
         switch self {
-        case .getRepositories(let userName): return "users/\(userName)/subscriptions"
+        case .getRepositories: return "user/subscriptions"
         }
     }
 
@@ -39,5 +39,9 @@ extension RepositoryRequestConfiguration: RequestConfiguration {
         switch self {
         case .getRepositories: return ["per_page": 100]
         }
+    }
+
+    var interceptor: RequestInterceptor? {
+        AuthenticatedInterceptor(keychain: Keychain.default)
     }
 }
