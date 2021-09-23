@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 import UserNotifications
 
-final class NotificationManager {
+final class NotificationManager: NSObject {
 
     private let notificationCenter = UNUserNotificationCenter.current()
     private var isAuthorized: Bool = false
@@ -26,6 +26,9 @@ final class NotificationManager {
             AppStorage<Any>.Keys.notificationHasSound(),
             store: store
         )
+        super.init()
+
+        notificationCenter.delegate = self
     }
 
     private func getNotificationType(reason: NotificationReason) -> NotificationType {
@@ -38,7 +41,12 @@ final class NotificationManager {
         }
     }
 
-    func scheduleNotification(reason: NotificationReason, repoName: String, prTitle: String) {
+    func scheduleNotification(
+        reason: NotificationReason,
+        repoName: String,
+        prTitle: String,
+        url: String
+    ) {
         if isAuthorized {
             let type = self.getNotificationType(reason: reason)
 
@@ -46,7 +54,10 @@ final class NotificationManager {
             content.title = "\(repoName)"
             content.body = "\(type.title) on: \(prTitle)"
             content.sound = notificationHasSound ? UNNotificationSound.default : nil
-
+            content.userInfo = [
+                "url": url
+            ]
+            
             let uuidString = UUID().uuidString
             let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: nil)
 
@@ -74,6 +85,25 @@ final class NotificationManager {
                 self.isAuthorized = authorized
             })
             .store(in: &cancellableBag)
+    }
+}
+
+extension NotificationManager: UNUserNotificationCenterDelegate {
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case UNNotificationDefaultActionIdentifier:
+            guard let stringURL = response
+                    .notification
+                    .request
+                    .content
+                    .userInfo["url"] as? String,
+                  let url = try? stringURL.asURL() else { break }
+            UIApplication.shared.open(url)
+        default: break
+        }
+
+        completionHandler()
     }
 }
 
