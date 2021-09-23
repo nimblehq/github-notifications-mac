@@ -10,58 +10,67 @@ import SwiftUI
 struct ContentView: View {
 
     @State private var isLoggedIn: Bool = false
+    @State private var selectedItemId: Int? = 0
     @ObservedObject var viewModel = ContentViewModel(userSession: UserSessionStorage())
 
     init() {
         _isLoggedIn = State(initialValue: viewModel.getIsLoggedIn())
         UITableViewCell.appearance().selectionStyle = .none
     }
+
     var body: some View {
+        NavigationView {
             if isLoggedIn {
-                NavigationView {
-                    makePreferenceSideBarView()
-                    GeneralScreen() // set default screen
-                }
+                makePreferenceSideBarView()
+                GeneralScreen() // set default screen
             } else {
-                NavigationView {
-                    makeLoginSideBarView()
-                    LoginScreen(isLoggedIn: $isLoggedIn)
-                }
+                makeLoginSideBarView()
+                LoginScreen(isLoggedIn: $isLoggedIn)
             }
         }
+        .onChange(of: isLoggedIn) { _ in
+            selectedItemId = isLoggedIn ? 0 : LoginTabType.accessToken.rawValue
+        }
+    }
+    
+    // MARK: - Logged In Sidebar
 
     private func makePreferenceSideBarView() -> some View {
         List() {
-            NavigationLink(
-                destination: GeneralScreen(),
-                label: { Text(PreferenceTabType.general.title).font(.title2) }
-            )
-            .padding(.top, 50.0)
-            .listRowBackground(Color(UIColor.systemGroupedBackground))
-
-            NavigationLink(
-                destination: RepositoryScreen(),
-                label: { Text(PreferenceTabType.repositories.title).font(.title2) }
-            )
-            .padding(.top, 20.0)
-            .listRowBackground(Color(UIColor.systemGroupedBackground))
-
-            NavigationLink(
-                destination: AccountScreen(isLoggedIn: $isLoggedIn),
-                label: { Text(PreferenceTabType.account.title).font(.title2) }
-            )
-            .padding(.top, 20.0)
-            .listRowBackground(Color(UIColor.systemGroupedBackground))
+            ForEach(PreferenceTabType.allCases, id: \.rawValue) { item in
+                NavigationLink(
+                    destination: view(for: item),
+                    tag: item.rawValue,
+                    selection: $selectedItemId) {
+                        Text(item.title)
+                            .font(item.rawValue == selectedItemId ? .title2.bold() : .title2)
+                }
+                .padding(.top, 50.0)
+                .listRowBackground(Color(UIColor.systemGroupedBackground))
+            }
         }
         .listStyle(SidebarListStyle())
         .navigationTitle("Preferences")
     }
 
+    @ViewBuilder
+    private func view(for destination: PreferenceTabType) -> some View {
+        switch destination {
+        case .general: GeneralScreen()
+        case .repositories: RepositoryScreen()
+        case .account: AccountScreen(isLoggedIn: $isLoggedIn)
+        }
+    }
+
+    // MARK: - Logged Out Sidebar
+
     private func makeLoginSideBarView() -> some View {
         List() {
             NavigationLink(
                 destination: LoginScreen(isLoggedIn: $isLoggedIn),
-                label: { Text(LoginTabType.accessToken.title).font(.title2) }
+                tag: LoginTabType.accessToken.rawValue,
+                selection: $selectedItemId,
+                label: { Text(LoginTabType.accessToken.title).font(.title2.bold()) }
             )
             .padding(.top, 50.0)
             .listRowBackground(Color(UIColor.systemGroupedBackground))
@@ -75,7 +84,7 @@ extension ContentView {
 
     enum LoginTabType: Int, CaseIterable {
 
-        case accessToken
+        case accessToken = -1
 
         var title: String {
             switch self {
