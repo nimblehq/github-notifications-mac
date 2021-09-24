@@ -35,8 +35,30 @@ extension APINotification {
 
     struct Subject: Decodable {
 
+        private enum CodingKeys : String, CodingKey {
+            case title, type
+            case apiURL = "url"
+        }
+
         let title: String
-        let url: String
         let type: NotificationSubjectType
+
+        // Replace with web url
+        private let apiURL: String
+        var url: String {
+            var url = apiURL.replacingOccurrences(
+                of: "api.github.com/repos",
+                with: "github.com"
+            )
+
+            // TODO: Fix url case by case
+            // Fix PR url
+            url = url.replacingOccurrences(
+                of: "/pulls/",
+                with: "/pull/"
+            )
+
+            return url
+        }
     }
 }
