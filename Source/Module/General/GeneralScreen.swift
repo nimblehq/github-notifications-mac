@@ -10,7 +10,9 @@ import SwiftUI
 
 struct GeneralScreen: View {
 
-    @ObservedObject var generalScreenObservable = GeneralScreenObservable()
+    @ObservedObject var generalScreenObservable = GeneralScreenObservable(
+        notificationManager: NotificationManager()
+    )
 
     var body: some View {
         makeSettingListView()
@@ -26,6 +28,9 @@ struct GeneralScreen: View {
         .padding(.leading, 8.0)
         .navigationTitle("General")
         .foregroundColor(.almostBlack)
+        .onChange(of: generalScreenObservable.repeatPullRequestNotification) { _ in
+            generalScreenObservable.didToggleRepeatPullRequestNotification()
+        }
     }
 }
 
