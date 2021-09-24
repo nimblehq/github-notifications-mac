@@ -10,7 +10,12 @@ import SwiftUI
 import Combine
 import UserNotifications
 
-final class NotificationManager: NSObject {
+protocol NotificationManagerProtocol: NSObject {
+
+    func didChangeRepeatPullRequestNotification(to: Bool)
+}
+
+final class NotificationManager: NSObject, NotificationManagerProtocol {
 
     private let notificationCenter = UNUserNotificationCenter.current()
     private let repeatDuration = 60.0 * 10.0
@@ -51,6 +56,8 @@ final class NotificationManager: NSObject {
         }
     }
 
+    // MARK: Schedule New Notification
+
     func scheduleNotification(
         reason: NotificationReason,
         repoName: String,
@@ -87,6 +94,8 @@ final class NotificationManager: NSObject {
         notificationCenter.add(request)
     }
 
+    // MARK: Notification Permission
+
     func requestNotificationPermission() {
         notificationCenter.getNotificationSettings()
             .flatMap { settings -> AnyPublisher<Bool, Never> in
@@ -108,7 +117,20 @@ final class NotificationManager: NSObject {
             })
             .store(in: &cancellableBag)
     }
+
+    // MARK: Clear Notification
+
+    func didChangeRepeatPullRequestNotification(to: Bool) {
+        guard to == false else { return }
+        removeAllNotifications()
+    }
+
+    private func removeAllNotifications() {
+        notificationCenter.removeAllPendingNotificationRequests()
+    }
 }
+
+// MARK: - UNUserNotificationCenterDelegate
 
 extension NotificationManager: UNUserNotificationCenterDelegate {
 
