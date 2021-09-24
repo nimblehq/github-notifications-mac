@@ -137,7 +137,6 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         switch response.actionIdentifier {
         case UNNotificationDefaultActionIdentifier:
-            notificationCenter.removePendingNotificationRequests(withIdentifiers: [response.notification.request.identifier])
             guard let stringURL = response
                     .notification
                     .request
@@ -147,7 +146,7 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
             UIApplication.shared.open(url)
         default: break
         }
-
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [response.notification.request.identifier])
         completionHandler()
     }
 }
