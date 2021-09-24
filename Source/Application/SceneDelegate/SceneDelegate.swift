@@ -25,9 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(
-                rootView: contentView.environment(\.colorScheme, .light)
-            )
+            window.rootViewController = UIHostingController(rootView: contentView)
             #if os(OSX) || targetEnvironment(macCatalyst)
             if let titlebar = window.windowScene?.titlebar {
                 titlebar.titleVisibility = .hidden
