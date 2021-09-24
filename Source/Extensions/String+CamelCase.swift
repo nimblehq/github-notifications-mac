@@ -21,7 +21,7 @@ extension String {
     var camelized: String {
         guard !isEmpty else { return "" }
         let parts = components(separatedBy: CharacterSet.alphanumerics.inverted)
-        let first = String(describing: parts.first!).lowercasingFirst
+        let first = String(describing: parts.first ?? "").lowercasingFirst
         let rest = parts.dropFirst().map({String($0).uppercasingFirst})
         return ([first] + rest).joined(separator: "")
     }
