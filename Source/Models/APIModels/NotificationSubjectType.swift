@@ -17,7 +17,7 @@ enum NotificationSubjectType: String, Decodable {
 
     init(from decoder: Decoder) throws {
         let value = try decoder.singleValueContainer().decode(String.self)
-        let decoded = NotificationSubjectType(rawValue: value.capitalized)
+        let decoded = NotificationSubjectType(rawValue: value.camelized)
         self = decoded ?? .unknown
     }
 }
