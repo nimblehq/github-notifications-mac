@@ -56,7 +56,11 @@ platform :mac do
 
   desc 'zip app'
   lane :package_app do
-    sh('zip -r ../GithubNotifications.app.zip ../Github\ Notifications.app')
+    sh('mv ../Github\ Notifications.app ../GithubNotifications.app')
+    zip(
+      path: "GithubNotifications.app",
+      output_path: "GithubNotifications.app.zip"
+    )
   end
 
   desc 'Test Build'
