@@ -62,12 +62,11 @@ extension AppDelegate {
                         isShowNotiBanner = false
                     }
                     if isShowNotiBanner {
-                        let url = $0.subject.url.replacingOccurrences(of: "api.github.com/repos", with: "github.com")
                         self.notificationManager.scheduleNotification(
                             reason: $0.reason,
                             repoName: $0.repository.fullName,
                             prTitle: $0.subject.title,
-                            url: url
+                            url: $0.subject.url
                         )
                     }
                 }
