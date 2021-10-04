@@ -1,12 +1,16 @@
-# Git Repository Template
+# Github Notifications Application
 
-Project repository template to set up all public projects at [Nimble](https://nimblehq.co/)
+## What is Github Notifications Application?
+Github Notifications is a macOS application to manage Github Notifications to be more personalized. Receive notifications on your Mac when there are new updates on subscribed repositories.
 
-## Usage
+<p align="center">
+    <img width="40%" height="40%" src="https://user-images.githubusercontent.com/45258998/135804727-7b975bb1-4373-4b72-a82e-8ec92d204d1a.gif">
+</p>
 
-Clone the repository
-
-`git clone git@github.com:nimblehq/git-template.git`
+## Getting Started
+The application can be installed by:
+- [Clone The Repository](https://github.com/nimblehq/github-notifications-mac/wiki/Clone-The-Repository)
+- [Download Notarized Application From Release](https://github.com/nimblehq/github-notifications-mac/wiki/Download-Notarized-Application)
 
 ## License
 
