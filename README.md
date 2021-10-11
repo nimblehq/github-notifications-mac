@@ -1,7 +1,7 @@
 # Github Notifications Application
 
 ## What is Github Notifications Application?
-Github Notification Application is a macOS application for managing and personalized Github's notifications. Receive notifications from subscribed repositories on your Mac when you were assigned, mentioned, review requested, and when your pull request was reviewed.
+Github Notification Application is a macOS application for managing and personalized Github's notifications. It receives notifications from subscribed repositories on your Mac when you were assigned, mentioned, review requested, and when your pull request was reviewed.
 
 <p align="center">
     <img width="40%" height="40%" src="https://user-images.githubusercontent.com/45258998/135804727-7b975bb1-4373-4b72-a82e-8ec92d204d1a.gif">
